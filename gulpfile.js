@@ -16,7 +16,12 @@ gulp.task('canvas_jsdoc',function(){
     plugins: ['plugins/markdown'],
     name: 'canvas'
   }))
-  .pipe(jsdoc.generator('./dest/html5'))
+  .pipe(jsdoc.generator('./dest/html5',null,{
+    'private': true,
+    monospaceLinks: true,
+    cleverLinks: true,
+    outputSourceFiles: true
+  }))
   //.pipe(jsdoc('./dest'))
 });
 
@@ -30,19 +35,14 @@ gulp.task('js_jsdoc',function(){
   return gulp.src(['./src/javascript/*.js'])
   .pipe(jsdoc.parser({
     plugins: ['plugins/markdown'],
-    markdown:{
-      renderer: new marked.Renderer(),
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false
-    },
     name: 'javascript'
   }))
-  .pipe(jsdoc.generator('./dest'))
+  .pipe(jsdoc.generator('./dest',null,{
+    'private': true,
+    monospaceLinks: true,
+    cleverLinks: true,
+    outputSourceFiles: true
+  }))
 })
 
 gulp.task('mddoc',function(){

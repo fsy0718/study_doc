@@ -48,6 +48,7 @@ function callback(blob){}
 /**
  * @description canvas 绘图表面的高度
    - [点击查看css重置canvas元素大小导致变形实例](../../../example/html5/canvas/HTMLCanvasElement/width.html "css重置canvas元素大小导致变形")
+   - [鼠标位置转换成canvas坐标](../../../example/html5/canvas/HTMLCanvasElement/transformPosition.html)
  * @type {number}
  * @default  300
  * @see [width]{@link HTMLCanvasElement#width}

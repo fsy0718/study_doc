@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>鼠标坐标转换成canvas坐标</title>
+  <link rel="stylesheet" type="text/css" href="../../../css/style.css">
+  <style>
+    canvas:nth-child(2){
+      width: 600px;
+      height: 600px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <canvas width="600" height="600"></canvas>
+  <canvas></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../js'
+    })
+    require(['html5/drawGrid','html5/windowToCanvasPosition'],function(drawGrid,transPos){
+      var canvas = document.querySelectorAll('canvas');
+      var canvas1 = canvas[0], canvas2 = canvas[1], context1 = canvas1.getContext('2d'), context2 = canvas2.getContext('2d');
+
+      var canvasArr = [].slice.call(canvas);
+
+      var fns = ['log','info']
+
+      canvasArr.forEach(function(cvs,i){
+
+        var ctx = cvs.getContext('2d');
+        drawGrid(ctx)
+        cvs.addEventListener('mousedown',function(e){
+          var x = e.x || e.clientX;
+          var y = e.y || e.clientY;
+          var pos = transPos(cvs,x,y);
+          console.group(i);
+          console[fns[i]]('x:' + pos.x + ' y:' + pos.y);
+          console.groupEnd();
+        },false)
+      })
+    })
+  </script>
+</body>
+</html>

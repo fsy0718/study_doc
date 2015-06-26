@@ -181,7 +181,8 @@ CanvasRenderingContext2D.prototype = {
   strokeStyle: '#000',
 
   /**
-   * 线的宽度，当获取属性值时，它可以返回当前的值（默认值是1.0 ）。 当给属性赋值时， 0、 负数、 Infinity 和 NaN 都会被忽略；除此之外，都会被赋予一个新值。
+   * 线的宽度，当获取属性值时，它可以返回当前的值（默认值是1.0 ）。 当给属性赋值时， 0、 负数、 Infinity 和 NaN 都会被忽略；除此之外，都会被赋予一个新值。**并非设置1，就会画出1px的线，因为当画的线在两个像素的分隔处时，绘图环境期望将线分成两部分，分属在分隔线的两边，因此分隔线两边各分0.5像素，但浏览器不会在1像素的区域内画出0.5像素，所以会自动扩充为1像素，最终得到2像素的线**
+   - [画真正1像素的线](../../example/html5/canvas/CanvasRenderingContext2D/line/lineWidth_1px.html)
    * @default 1.0
    * @type {Number}
    */

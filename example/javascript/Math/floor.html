@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>十进制调整 round10 floor10 ceil10</title>
+</head>
+<body>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../js'
+    })
+    require(['math'],function(MathExpand){
+      // Round
+      console.log(MathExpand.round10(55.55, -1)); // 55.6
+      console.log(MathExpand.round10(55.549, -1)); // 55.5
+      console.log(MathExpand.round10(55, 1)); // 60
+      console.log(MathExpand.round10(54.9, 1)); // 50
+      console.log(MathExpand.round10(-55.55, -1)); // -55.5
+      console.log(MathExpand.round10(-55.551, -1)); // -55.6
+      console.log(MathExpand.round10(-55, 1)); // -50
+      console.log(MathExpand.round10(-55.1, 1)); // -60
+      // Floor
+      console.log(MathExpand.floor10(55.59, -1)); // 55.5
+      console.log(MathExpand.floor10(59, 1)); // 50
+      console.log(MathExpand.floor10(-55.51, -1)); // -55.6
+      console.log(MathExpand.floor10(-51, 1)); // -60
+      // Ceil
+      console.log(MathExpand.ceil10(55.51, -1)); // 55.6
+      console.log(MathExpand.ceil10(51, 1)); // 60
+      console.log(MathExpand.ceil10(-55.59, -1)); // -55.5
+      console.log(MathExpand.ceil10(-59, 1)); // -50
+
+      console.log(MathExpand.ceil10(55.511,-2));
+    })
+  </script>
+</body>
+</html>

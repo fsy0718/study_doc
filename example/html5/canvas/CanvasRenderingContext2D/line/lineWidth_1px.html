@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>真正意义上的1像素的线</title>
+  <link rel="stylesheet" type="text/css" href="../../../../css/style.css">
+  <style>
+    html,body{width: 100%;min-height: 100%;text-align:center;}
+    canvas{display: block;}
+
+  </style>
+</head>
+<body>
+  <p>蓝线是真正意义上的1px的线</p>
+  <canvas></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../../js'
+    })
+    require(['html5/drawGrid'],function(drawGrid){
+      var body = document.documentElement;
+      var canvas = document.querySelector('canvas');
+      canvas.width = body.clientWidth;
+      canvas.height = body.clientHeight;
+      var context = canvas.getContext('2d');
+
+      drawGrid(context,{lineWidth:1});
+
+      context.lineWidth = 1;
+      context.globalAlpha = 0.5;
+      context.save();
+      context.beginPath();
+      context.strokeStyle = 'rgb(255,0,0)';
+
+      context.moveTo(50,200);
+      context.lineTo(800,200);
+      context.stroke();
+      context.restore();
+
+
+      context.save();
+      context.beginPath();
+      context.strokeStyle = 'rgb(0,0,255)';
+      context.moveTo(50.5,500.5);
+      context.lineTo(800.5,500.5)
+      context.stroke();
+      context.restore();
+    })
+  </script>
+</body>
+</html>

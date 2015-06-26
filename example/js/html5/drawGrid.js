@@ -2,7 +2,7 @@
  * @module drawGrid
  * @exports {Function}     返回一个画网格的回调函数
  */
-define(function(){
+define(['tool/util'],function(util){
   /**
    * 回调函数
    * @param {HTMLElement} [canvas=context.canvas] canvas元素
@@ -17,22 +17,28 @@ define(function(){
    */
   return function(canvas,context,opt){
     if(arguments.length < 3){
+      opt = arguments[1];
       context = arguments[0]
       canvas = context.canvas;
-      opt = arguments[1];
     }
     /**
      * @private
      * @var
-     * @type {object}
+     * @type {Object}
      */
-    var _grid = Object.prototype.toString.call(opt) === '[object Object]' ? opt : {
+    var _grid = {
       gapX: 10,
       gapY: 10,
       color: 'rgb(0,0,200)',
       alpha : 0.1,
       lineWidth: 0.5
     }
+
+    /**
+     * @mixins _grid
+     * @type {Object}
+     */
+    _grid = Object.prototype.toString.call(opt) === '[object Object]' ? util.merge(_grid,opt,true) : _grid
     /**
      * 从0.5开始，可以画出真正意义上1px的线
      * @type {Number}

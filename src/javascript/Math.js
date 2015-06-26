@@ -49,6 +49,10 @@ var exports = {
    * @method
    * @param  {number} x
    * @return {number}
+     | 输入值x| 可以转换成数值的参数 | 不能转换成数值的参数 |Infinity或-Infinify|
+     |:----|----:|----:|:----:|
+     |输出值| 正数x | NaN| Infinity|
+
    */
    abs: function(x){},
 
@@ -83,6 +87,7 @@ var exports = {
 
   /**
    * 返回x向上取整后的值.
+   - [扩展：十进制调整](../../example/javascript/Math/floor.html)
    * @param  {number} x
    * @return {number}
    */
@@ -105,6 +110,7 @@ var exports = {
 
   /**
    * 返回小于x的最大整数。
+   - [扩展：十进制调整](../../example/javascript/Math/floor.html)
    * @param  {number} x
    * @return {number}
    */
@@ -150,12 +156,14 @@ var exports = {
 
   /**
    *  函数返回 [0-1) 的浮点值伪随机数
+   - [扩展：输出指定范围的整数](../../example/javascript/Math/random.html)
    * @return {number}
    */
    random: function(){},
 
   /**
-   * 返回四舍五入后的整数.
+ * @description 返回四舍五入后的整数
+   - [扩展：十进制调整](../../example/javascript/Math/floor.html)
    * @param  {number} x
    * @return {number}   Int
    */
