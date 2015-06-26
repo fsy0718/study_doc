@@ -1,0 +1,22 @@
+{
+  "name": "jsdoc_study",
+  "version": "0.0.1",
+  "description": "study of jsdoc",
+  "repository": {
+    "type": "git",
+    "url": "git@git.oschina.net:fsy0718/jsdoc.git"
+  },
+  "author": "fsy0718",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jsdoc": "^0.1.4",
+    "gulp-jsdoc-to-markdown": "^1.1.1",
+    "gulp-markdown": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.6",
+    "marked": "^0.3.3"
+  }
+}

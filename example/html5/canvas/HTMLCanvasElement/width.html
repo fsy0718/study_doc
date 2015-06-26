@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas元素大小与绘图表面大小</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    canvas{display: block;margin: 20px auto;}
+    .demo2,.demo3{width:600px;height:300px;}
+  </style>
+</head>
+<body>
+  <canvas class="demo1 demo" width="600" height="300"></canvas>
+  <canvas class="demo demo2"></canvas>
+  <canvas class="demo demo3"></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script src="../../../js/drawGrid.js"></script>
+  <script>
+  require.config({
+    baseUrl: '../../../js'
+  })
+  require(['drawGrid','element'],function(drawGrid){
+    var cvs = document.querySelectorAll('.demo');
+
+    function drawHelloWorld(cvs){
+      var ctx = cvs.getContext('2d');
+
+      if(cvs.hasClass('demo3')){
+        var w = cvs.clientWidth;
+        var h = cvs.clientHeight;
+        cvs.width = w;
+        cvs.height = h;
+      }
+      drawGrid(ctx);
+
+      ctx.fillStyle = 'cornflowerblue';
+      ctx.strokeStyle = 'blue';
+      var w = cvs.width;
+      var h = cvs.height;
+      var ctxStr = '绘画图像大小：width:' + w + 'px,height:' + h + 'px'
+      var cvsStr = '元素大小：width' + cvs.clientWidth + 'px,height' + cvs.clientHeight + 'px';
+      var textMetricsCtx = ctx.measureText(ctxStr)
+      var textMetricsCvs = ctx.measureText(ctxStr)
+      ctx.fillText(cvsStr,(cvs.width - textMetricsCvs.width)/2,20);
+      ctx.fillText(ctxStr,(cvs.width - textMetricsCtx.width)/2,50);
+      ctx.font = '38pt Arial';
+      ctx.fillText("Hello canvas", cvs.width/ 2 - 150, cvs.height / 2 + 15);
+      ctx.strokeText('Hello canvas',cvs.width / 2 - 150,cvs.height / 2 + 15);
+    }
+
+    var cvsArr = [].slice.call(cvs);
+    cvsArr.forEach(function(_cvs,i){
+      drawHelloWorld(_cvs);
+    })
+
+  })
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas 离屏钟表</title>
+  <link rel="stylesheet" type="text/css" href="../../../css/style.css">
+  <style>
+    .clock{
+      width: 602px;
+      height: 602px;
+      margin: 20px auto;
+      position: relative;
+      background: #fff;
+    }
+    p{text-align:center;}
+    canvas{
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .tip{
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <p>应用 toDataURL,将当前的 canvas 变成 img 的 src</p>
+  <div class="clock">
+    <p class="tip">toDataURL的quality为1</p>
+    <img alt="离屏钟表"/>
+    <canvas width="600" height="600"></canvas>
+  </div>
+
+    <div class="clock">
+        <p class="tip">toDataURL的quality为0.5</p>
+    <img alt="离屏钟表"/>
+    <canvas width="600" height="600"></canvas>
+  </div>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script src="../../../js/drawGrid.js"></script>
+  <script>
+  require.config({
+    baseUrl: '../../../js'
+  })
+  require(['drawGrid'],function(drawGrid){
+    var RADIUS = 200;
+    var CENTERX = 300;
+    var CENTERY = 300;
+    var LONGGRADUATE = 20;
+    var SHORTGRADUATE = 10;
+    var MINUTE_HAND_TRUNCATION = 90;
+    var MINUTE_HAND_WIDTH = 3;
+    var SECOND_HAND_TRUNCATION = 120;
+    var SECOND_HAND_WIDTH = 1;
+    var HOUR_HAND_TRUNCATION =  60;
+    var HOUR_HAND_WIDTH =  5;
+
+
+    function drawCircle(context){
+      context.beginPath();
+      context.arc(CENTERX,CENTERY,RADIUS,0,Math.PI*2);
+      context.stroke();
+    }
+
+
+    function drawGraduate(angle,isShort,context){
+      var x1,y1,x2,y2;
+      var _angle = angle === 90 || angle === 270 ? 90 : angle % 90;
+      if(angle >=0 && angle <= 180){
+        y1 = CENTERY - RADIUS*Math.sin(Math.PI*_angle/180);
+        y2 = CENTERY - (RADIUS - (isShort ? SHORTGRADUATE : LONGGRADUATE))*Math.sin(Math.PI*_angle/180)
+      }else{
+        y1 = CENTERY + RADIUS*Math.sin(Math.PI*_angle/180)
+        y2 = CENTERY + (RADIUS - (isShort ? SHORTGRADUATE: LONGGRADUATE))*Math.sin(Math.PI*_angle/180)
+      }
+
+      if((angle >=0 && angle <= 90) || (angle >= 270 && angle < 360)){
+
+        x1 = CENTERX + RADIUS* Math.cos(Math.PI*_angle/180);
+        x2 = CENTERX + (RADIUS - (isShort ? SHORTGRADUATE: LONGGRADUATE))* Math.cos(Math.PI*_angle/180)
+      }else{
+        x1 = CENTERX - RADIUS* Math.cos(Math.PI*_angle/180)
+        x2 = CENTERX - (RADIUS - (isShort ? SHORTGRADUATE: LONGGRADUATE))* Math.cos(Math.PI*_angle/180)
+      }
+      context.save();
+      context.beginPath();
+      context.globalAlpha = isShort ? 0.3 : 0.5;
+      context.moveTo(x1,y1);
+      context.lineTo(x2,y2);
+      context.stroke();
+      context.restore();
+    }
+
+    function drawHand(context,angle,long,width){
+      /*
+       * 钟表的0度是从0开始的，在canvas中是90度，则需要减掉
+       */
+      angle = 180 - angle;
+      var x1 = CENTERX + long*Math.sin(Math.PI*angle/180);
+      var y1 = CENTERY + long* Math.cos(Math.PI*angle/180)
+      //console.log('type:'+ long + ' x1:' + x1 + 'y1:' + y1)
+      context.save();
+      context.lineWidth = width;
+      context.beginPath();
+      context.moveTo(CENTERX,CENTERY);
+      context.lineTo(x1,y1);
+      context.stroke();
+
+    }
+
+    function drawHands(context){
+      var date = new Date();
+      var hour = date.getHours();
+      hour = hour >= 12 ? hour - 12 : hour;
+      //时钟
+      drawHand(context,(hour + (date.getMinutes() / 60)*30),HOUR_HAND_TRUNCATION,HOUR_HAND_WIDTH);
+      drawHand(context,date.getMinutes()*6,MINUTE_HAND_TRUNCATION,MINUTE_HAND_WIDTH);
+      drawHand(context,date.getSeconds()*6,SECOND_HAND_TRUNCATION,SECOND_HAND_WIDTH);
+    }
+
+    function drawNumberals(){}
+
+    function drawGraduates(context){
+      var i = 0;
+      while(i < 360){
+        drawGraduate(i,i%30,context);
+        i+= 5;
+      }
+    }
+
+    function drawClock(context){
+      context.clearRect(0,0,context.canvas.width,context.canvas.height);
+      context.fillStyle = '#fff';
+      context.fillRect(0,0,context.canvas.width,context.canvas.height);
+      drawGrid(context);
+      drawCircle(context);
+      drawGraduates(context);
+      drawHands(context);
+    }
+
+    function drawOfflineCanvasClock(context,img,quality){
+      drawClock(context);
+      var base64 = context.canvas.toDataURL('image/jpeg',quality);
+      img.setAttribute('src',base64);
+    }
+
+    var canvas = document.querySelectorAll('canvas');
+    var canvas1 = canvas[0];
+    var canvas2 = canvas[1];
+    var context1 = canvas1.getContext('2d');
+    var context2 = canvas2.getContext('2d');
+    var img = document.querySelectorAll('img');
+    var img1 = img[0]
+    var img2 = img[1]
+    setInterval(function(){
+      drawOfflineCanvasClock(context1,img1,1);
+      drawOfflineCanvasClock(context2,img2,0.5);
+    },1000);
+
+  })
+
+
+
+
+  </script>
+</body>
+</html>
