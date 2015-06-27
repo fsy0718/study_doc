@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas 状态保存 --- 线相关的属性</title>
+  <link rel="stylesheet" type="text/css" href="../../../../css/style.css">
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../../js'
+    })
+    require(['html5/drawGrid'],function(drawGrid){
+      var canvas = document.querySelector('canvas');
+      var context = canvas.getContext('2d');
+
+      function drawLine(y){
+        context.moveTo(10,30+y);
+        var i = 0;
+        while(i < 50){
+          context.lineTo(10 + 10*i,30+y + ((i%2) ? 10 : -10));
+          i++;
+        }
+      }
+
+
+      drawGrid(context);
+      context.beginPath();
+      context.lineWidth = 5;
+      context.lineJoin = 'round';
+      context.lineGap = 'square';
+      context.save();
+      drawLine(10)
+      context.save();
+      context.lineJoin = 'miter';
+      context.miterLimit = 5;
+      drawLine(30)
+
+      context.restore();
+      drawLine(50);
+      context.restore();
+      context.stroke();
+
+    })
+  </script>
+</body>
+</html>

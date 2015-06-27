@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas 状态保存之 shadow相关属性</title>
+  <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../../js'
+    });
+
+    require(['html5/drawGrid'],function(drawGrid){
+      var canvas = document.querySelector('canvas');
+      var context = canvas.getContext('2d');
+      drawGrid(context);
+      context.font = '50px STHeiti,SimHei'
+      context.fillStyle = 'rgb(255,0,0)';
+      context.strokeStyle = 'rgb(0,255,0)';
+      context.shadowColor = 'rgba(255,255,0,.7)';
+      context.shadowOffsetX = 3;
+      context.shadowOffsetY = 3;
+      context.shadowBlur = 5;
+      context.save();
+      context.font = '30px STSong,SimSun';
+      context.fillStyle = 'rgb(0,0,255)';
+      context.strokeStyle = 'rgb(255,0,0)';
+      context.shadowColor = 'rgba(255,0,255,.7)';
+      context.save();
+      context.shadowColor = 'rgba(0,0,0,.7)';
+      context.font = '40px Arial';
+      context.fillStyle = 'rgb(0,255,0)';
+      context.strokeStyle = 'rgb(0,0,255)';
+      context.fillText('你好，canvas 状态保存',50,200)
+      context.strokeText('你好，canvas 状态保存',50,200);
+      context.restore();
+      context.fillText('你好，canvas 状态保存',50,300)
+      context.restore();
+      context.fillText('你好，canvas 状态保存',50,100);
+      context.strokeText('你好，canvas 状态保存',50,100);
+      context.restore();
+      context.fillText('你好，canvas 状态保存',50,400);
+      context.strokeText('你好，canvas 状态保存',50,400);
+    })
+  </script>
+</body>
+</html>

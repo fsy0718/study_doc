@@ -132,24 +132,36 @@ CanvasRenderingContext2D.prototype = {
   - 当前的剪切区域
   - 当前的虚线列表
   - 以下属性当前的值
-   - strokeStyle
-   - fillStyle
-   - globalAlpha
-   - lineWidth
-   - lineCap
-   - lineJoin
-   - miterLimit
-   - lineDashOffset
-   - shadowOffsetX
-   - shadowOffsetY
-   - shadowBlur
-   - shadowColor
-   - globalCompositeOperation
-   - font
-   - textAlign
-   - textBaseline
-   - direction
-   - imageSmoothingEnabled
+   - [strokeStyle](#strokeStyle) 实例如下：
+     - [保存状态 -- strokeStyle](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_strokeStyle.html)
+   - [fillStyle](#fillStyle)
+     - [保存状态 -- fillStyle](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_strokeStyle.html)
+   - [globalAlpha](#globalAlpha)
+     - [保存状态 -- globalAlpha](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_strokeStyle.html)
+   - [lineWidth](#lineWidth)
+     - [保存状态 -- line](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_line.html)
+   - [lineCap](#lineGap)
+     - [保存状态 -- line](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_line.html)
+   - [lineJoin](#lineJoin)
+     - [保存状态 -- line](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_line.html)
+   - [miterLimit](#miterLimit)
+     - [保存状态 -- line](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_line.html)
+   - [lineDashOffset](#lineDashOffset)
+   - [shadowOffsetX](#shadowOffsetX)
+     - [保存状态 -- shadow](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_shadow.html)
+   - [shadowOffsetY](#shadowOffsetY)
+     - [保存状态 -- shadow](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_shadow.html)
+   - [shadowBlur](#shadowBlur)
+     - [保存状态 -- shadow](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_shadow.html)
+   - [shadowColor](#shadowColor)
+     - [保存状态 -- shadow](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_shadow.html)
+   - [globalCompositeOperation](#globalCompositeOperation)
+   - [font](#font)
+     - [保存状态 -- font](../../../example/html5/canvas/CanvasRenderingContext2D/save/save_strokeStyle.html)
+   - [textAlign](#textAlign)
+   - [textBaseline](#textBaseline)
+   - [direction](#direction)
+   - [imageSmoothingEnabled](#imageSmoothingEnabled)
    */
   save: function(){},
 
