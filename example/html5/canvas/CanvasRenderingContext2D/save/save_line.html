@@ -17,31 +17,83 @@
       var context = canvas.getContext('2d');
 
       function drawLine(y){
-        context.moveTo(10,30+y);
+      /*        //暂存当前的 lineWidth globalAlpha 值,不用暂存，可以通过 save 保存当前的状态，后面再还原
+        var lineWidth = context.lineWidth;
+        var globalAlpha = context.globalAlpha;*/
+
+        context.save();
+        context.beginPath();
+
+        //画两条参考线，可以看出 line 相关属性
+        context.globalAlpha = .3;
+        context.lineWidth = .5;
+        context.moveTo(10,20.5+y);
+        context.lineTo(canvas.width,20.5+y);
+        context.moveTo(10,40.5+y);
+        context.lineTo(canvas.width,40.5+y);
+
+        context.stroke();
+        context.restore();
+        //指出当前的参数
+        context.globalAlpha = 1;
+
+        context.strokeText('lineJoin:' + context.lineJoin + ' lineCap:' + context.lineCap,410,30+y);
+        if(context.lineJoin === 'miter'){
+          context.strokeText('miterLimit:' + context.miterLimit,410, 45+y)
+        }
+        //还原当前的 lineWidth globalAlpha
+        context.restore();
+
+        //context.lineWidth = lineWidth;
+        //context.globalAlpha = globalAlpha;
+
+        //画线
+        context.beginPath();
+        context.moveTo(40,30+y);
         var i = 0;
-        while(i < 50){
-          context.lineTo(10 + 10*i,30+y + ((i%2) ? 10 : -10));
+        while(i < 35){
+          context.lineTo(40 + 10*i,30+y + ((i%2) ? 10 : -10));
           i++;
         }
+        context.stroke();
+
       }
 
 
       drawGrid(context);
-      context.beginPath();
-      context.lineWidth = 5;
+
+      context.lineWidth = 10;
       context.lineJoin = 'round';
-      context.lineGap = 'square';
+      context.lineCap = 'square';
+
+      //第一次保存
       context.save();
       drawLine(10)
-      context.save();
+      //变更line 相关属性
       context.lineJoin = 'miter';
-      context.miterLimit = 5;
-      drawLine(30)
+      context.miterLimit = 10;
+      drawLine(50)
+      //第二次保存
+      context.save();
+      context.miterLimit = 1;
+      drawLine(100)
+      //恢复到第2次的状态
+      context.restore();
+      drawLine(150);
+      //恢复到第1次的状态
+      context.restore();
+      drawLine(200);
 
+      context.save();
+      context.lineJoin = 'bevel';
+      context.lineCap = 'round';
+      drawLine(250);
       context.restore();
-      drawLine(50);
-      context.restore();
-      context.stroke();
+
+      context.lineCap = 'butt';
+      drawLine(300);
+
+
 
     })
   </script>

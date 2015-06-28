@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>lineJoin</title>
+  <link rel="stylesheet" type="text/css" href="../../../../css/style.css">
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../../js'
+    })
+    require(['html5/drawGrid'],function(drawGrid){
+      var canvas = document.querySelector('canvas');
+      var context = canvas.getContext('2d');
+
+      drawGrid(context);
+
+      var lineJoinOpts = ['round','bevel','miter'];
+
+      var drawLine = function(i){
+        context.lineJoin = lineJoinOpts[i];
+        if(i > 2){
+          context.miterLimit = 8 - i;
+        }
+        context.save();
+        context.lineWidth = .5;
+        context.globalAlpha = .3;
+        context.moveTo(0,50*(i + 1) + .5 - 10);
+        context.lineTo(600,50*(i + 1) + .5 -10);
+        context.moveTo(0,50*(i + 1) + .5 + 10);
+        context.lineTo(600,50*(i + 1) + .5 + 10);
+
+        context.stroke();
+        context.globalAlpha = 1;
+        context.fillText('lineJoin:' + context.lineJoin,420,50*(i + 1));
+        if(context.lineJoin  === 'miter'){
+          context.fillText('miterLimit:' + context.miterLimit, 420,50*(i + 1) + 20)
+        }
+        context.restore();
+
+
+        context.beginPath();
+        context.moveTo(50,50*(i+1));
+        var j = 0;
+        while(j < 30){
+          context.lineTo(50 + j*10,50*(i+1) + (j % 2 ? +10 : -10));
+          j++;
+        }
+        context.stroke();
+        context.restore();
+      }
+
+      context.beginPath();
+      context.lineWidth = 15;
+      var i = 0;
+      while(i < 7){
+        drawLine(i)
+        i++;
+      }
+
+    })
+  </script>
+</body>
+</html>

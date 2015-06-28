@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>lineCap</title>
+  <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../../js'
+    })
+    require(['html5/drawGrid'],function(drawGrid){
+      var canvas = document.querySelector('canvas');
+      var context = canvas.getContext('2d');
+      drawGrid(context);
+
+      var lineCapOpts= ['butt','round','square'];
+      function drawLine(i){
+        context.beginPath();
+        context.save();
+        context.lineCap = lineCapOpts[i];
+        context.lineWidth = 10;
+        context.moveTo(50,50 * (i + 1));
+        context.lineTo(500,50 * (i + 1));
+        context.stroke();
+        context.restore();
+      }
+      context.beginPath();
+      context.lineWidth = .5;
+      context.globalAlpha = .3;
+      context.moveTo(50.5,0);
+      context.lineTo(50.5,600);
+      context.moveTo(500.5,0);
+      context.lineTo(500.5,600);
+      context.stroke();
+      context.globalAlpha = 1;
+      var i = 0;
+      while( i < 3){
+        drawLine(i);
+        i++
+      }
+    })
+  </script>
+</body>
+</html>
