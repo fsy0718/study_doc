@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>检测身份证</title>
+</head>
+<body>
+  <input type="text" value="422822198706175039"/>
+  <button>check</button>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+  require.config({
+    baseUrl: '../../_js'
+  })
+  require(['regexp/idCard'],function(idCard){
+    var ipt = document.querySelector('input');
+    var btn = document.querySelector('button');
+    btn.onclick = function(){
+      var val = ipt.value.trim();
+      if(val.length === 15 || val.length === 18){
+        var result = idCard.checkIdCard(val);
+        console.log(idCard.getIdInfos(val));
+        console.log(idCard.getIdInfosCN(val));
+      }
+    }
+  })
+  </script>
+</body>
+</html>

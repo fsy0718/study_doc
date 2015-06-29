@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>鼠标坐标转换成canvas坐标</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
   <style>
     canvas:nth-child(2){
       width: 600px;
@@ -19,7 +19,7 @@
   <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
   <script>
     require.config({
-      baseUrl: '../../../js'
+      baseUrl: '../../../_js'
     })
     require(['html5/drawGrid','html5/windowToCanvasPosition'],function(drawGrid,transPos){
       var canvas = document.querySelectorAll('canvas');

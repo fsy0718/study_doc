@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>canvas shadow</title>
-  <link rel="stylesheet" type="text/css" href="../../../../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../../../_css/style.css">
 </head>
 <body>
   <canvas width="600" height="600"></canvas>
@@ -12,10 +12,42 @@
   <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
   <script>
     require.config({
-      baseUrl: '../../../../js'
+      baseUrl: '../../../../_js'
     })
-    require(function(){
-      var canvas = document.querySelectorAll('canvas')
+    require(['html5/drawGrid'],function(drawGrid){
+      var canvas = document.querySelectorAll('canvas');
+      function drawGrap(cvs,fn){
+        var ctx = cvs.getContext('2d');
+        console.log(ctx);
+        ctx.shadowColor = 'rgba(0,123,3,0.6)';
+        ctx.shadowOffsetX = 5;
+        ctx.shadowOffsetY = -5;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        fn(ctx);
+      }
+
+      function drawText(ctx){
+        ctx.font = '50px Arail'
+        ctx.fillText('hello shadow',100,100);
+      }
+
+      function drawStrokeRectangle(ctx){
+        ctx.strokeRect(50,50,200,200);
+      }
+
+      function drawFillRectangle(ctx){
+        ctx.fillRect(50,50,200,200);
+      }
+
+      var fns = [drawText,drawStrokeRectangle,drawFillRectangle]
+
+      var cvss = [].slice.call(canvas);
+
+      cvss.forEach(function(cvs,i){
+        drawGrap(cvs,fns[i]);
+      })
+
     })
   </script>
 </body>

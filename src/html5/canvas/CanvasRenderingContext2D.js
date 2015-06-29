@@ -44,6 +44,7 @@ CanvasRenderingContext2D.prototype = {
 
   /**
    * 阴影的颜色
+   - [阴影](../../../example/html5/canvas/CanvasRenderingContext2D/shadow/shadow.html)
    * @default fully-transparent black
    * @type {String}
    */
@@ -51,6 +52,7 @@ CanvasRenderingContext2D.prototype = {
 
   /**
    * 阴影X轴上的偏移量
+   - [阴影](../../../example/html5/canvas/CanvasRenderingContext2D/shadow/shadow.html)
    * @default 0
    * @type {Number}
    */
@@ -58,6 +60,7 @@ CanvasRenderingContext2D.prototype = {
 
   /**
    * 阴影Y轴上的偏移量
+   - [阴影](../../../example/html5/canvas/CanvasRenderingContext2D/shadow/shadow.html)
    * @default 0
    * @type {Number}
    */
@@ -65,6 +68,7 @@ CanvasRenderingContext2D.prototype = {
 
   /**
    * 阴影模糊效果
+   - [阴影](../../../example/html5/canvas/CanvasRenderingContext2D/shadow/shadow.html)
    * @default 0
    * @type {Number}
    */

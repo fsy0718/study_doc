@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>canvas 离屏钟表</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
   <style>
     .clock{
       width: 602px;
@@ -46,10 +46,9 @@
     <canvas width="600" height="600"></canvas>
   </div>
   <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
-  <script src="../../../js/drawGrid.js"></script>
   <script>
   require.config({
-    baseUrl: '../../../js'
+    baseUrl: '../../../_js'
   })
   require(['html5/drawGrid'],function(drawGrid){
     var RADIUS = 200;

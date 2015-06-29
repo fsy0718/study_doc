@@ -29,6 +29,20 @@ http.createServer(function(request,response){
       response.writeHead('404',{'Context-Type':'text/plain'});
       response.end('Not Found');
       break;
+    case '.png':
+    case '.jpg':
+      fs.readFile('./' +request.url,function(err,data){
+        if(err){
+          throw err;
+        }
+        response.writeHead(200,{
+          'Context-Type':'image/*'
+        });
+        response.write(data);
+        response.end();
+      });
+      break;
+
     default:
       var _file = isExampleSource ? './' + request.url : './dest/' + (pathname !== '/' ? pathname : '/index.html');
       function readFile(file){

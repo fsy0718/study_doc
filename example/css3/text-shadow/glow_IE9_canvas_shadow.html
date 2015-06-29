@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>text-shadow发光效果[IE9上用canvas模拟]</title>
+  <link rel="stylesheet" href="../../_css/text-shadow_common.css">
+  <style>
+    /* .demo{
+      text-shadow: 0 0 20px red;
+    } */
+  </style>
+</head>
+<body>
+  <div class="demo">glow and extra glow effect</div>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../_js'
+    })
+    require(['html5/drawGrid'],function(drawGrid){
+      var demo = document.querySelector('.demo');
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      var w = demo.clientWidth;
+      var h = demo.clientHeight;
+      console.log(w);
+      console.log(h);
+      var txt = demo.innerText;
+      var size = window.getComputedStyle(demo).fontSize;
+      var bg = window.getComputedStyle(demo).backgroundColor;
+      var color = window.getComputedStyle(demo).color;
+      var family = window.getComputedStyle(demo).fontFamily;
+      var uppercase = window.getComputedStyle(demo).textTransform;
+      var padding = parseInt(window.getComputedStyle(demo).paddingLeft);
+      demo.style.display = 'none';
+      canvas.width = w;
+      canvas.height = h;
+      context.save();
+      context.fillStyle = bg;
+      context.fillRect(0,0,w,h)
+      context.restore();
+
+      context.shadowColor = 'red';
+      context.shadowOffsetX = 0;
+      context.shadowOffsetY = 0;
+      context.shadowBlur = 20;
+      context.fillStyle = color;
+      context.font = size + ' ' + family;
+      console.log(context.font);
+      context.font = '50px Microsoft Yahei';
+      context.fillText(txt,padding,padding + parseInt(size),w - padding * 2);
+      document.body.appendChild(canvas);
+    })
+  </script>
+
+</body>
+</html>
