@@ -14,6 +14,7 @@
     <li><p>javascript文档</p>
       <ul>
         <li><a href="/javascript/module-Math.html">Math对象</a></li>
+        <li><a href="/javascript/CSSStyleDeclaration.html">CSSStyleDeclaration 对象</a></li>
       </ul>
     </li>
     <li><p>css3文档</p>

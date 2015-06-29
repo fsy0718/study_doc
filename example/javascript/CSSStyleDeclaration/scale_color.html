@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>利用 getComputedStyle 返回的颜色格式变化颜色</title>
+</head>
+<body>
+  <p style="color:rgb(12,23,54)">test</p>
+  <button>change Color</button>
+  <button>reset</button>
+  <textarea></textarea>
+  <script>
+  function scaleColor(obj,scale){
+    var color = window.getComputedStyle(obj).color;
+    if(!defaultColor){
+      defaultColor = color;
+    }
+    var result = ''
+    var components = color.match(/[\d\.]+/g);
+    for(var i = 0; i < 3; i++){
+      var x = Number(components[i])*scale;
+      x = Math.round(Math.min(Math.max(x,0),255));
+      components[i] = String(x);
+    }
+    if(components.length === 3){
+      result = 'rgb(' + components.join() + ')';
+      obj.style.color = result;
+    }else{
+      result = 'rgba(' + components.join() + ')';
+      obj.style.color =  result;
+    }
+    return result;
+  }
+
+  function randomNum(min,max){
+    return Math.random()*(max-min) + min;
+  }
+
+
+  var btn = document.querySelectorAll('button');
+  var p = document.querySelector('p');
+  var textarea = document.querySelector('textarea');
+  var defaultColor;
+  btn[0].onclick = function(){
+    var scale = randomNum(0,3);
+    var color = scaleColor(p,scale);
+    textarea.value = 'scale:' + scale + '; color:' + color;
+  }
+
+  btn[1].onclick = function(){
+    if(defaultColor){
+      p.style.color = defaultColor;
+      textarea.value = '';
+    }
+  }
+  </script>
+</body>
+</html>

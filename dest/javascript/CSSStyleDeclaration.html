@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: CanvasPattern</title>
+    <title>JSDoc: Class: CSSStyleDeclaration</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: CanvasPattern</h1>
+    <h1 class="page-title">Class: CSSStyleDeclaration</h1>
 
     
 
@@ -27,10 +27,8 @@
 
 <header>
     <h2>
-    CanvasPattern
+    CSSStyleDeclaration
     </h2>
-    
-        <div class="class-description"><p>接口表示描述一个模板（基于image, canvas或video）的不透明对象</p></div>
     
 </header>
 
@@ -41,12 +39,23 @@
     
         
 <dt>
-    <h4 class="name" id="CanvasPattern"><span class="type-signature"></span>new CanvasPattern<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="CSSStyleDeclaration"><span class="type-signature"></span>new CSSStyleDeclaration<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 </dt>
 <dd>
 
+    
+    <div class="description">
+        <p>可以通过 window.getComputedStyle 获取</p>
+<ul>
+<li>计算样式的属性是只读</li>
+<li>计算样式的值是绝对值【会将百分比和点之类相对的单位全部转换成绝对值】,所有指定尺寸的属性都会有一个以像素为度量单位的值</li>
+<li>不会计算符合属性，只基于最基础的属性</li>
+<li>计算样式的 cssText 属性未定义</li>
+<li>计算样式与 style 获取不同，<a href="../../example/javascript/CSSStyleDeclaration/getComputedStyle_style.html">实例</a></li>
+</ul>
+    </div>
     
 
     
@@ -78,7 +87,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CanvasPattern.js.html">CanvasPattern.js</a>, <a href="CanvasPattern.js.html#line5">line 5</a>
+        <a href="CSSStyleDeclaration.js.html">CSSStyleDeclaration.js</a>, <a href="CSSStyleDeclaration.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -135,7 +144,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="CanvasGradient.html">CanvasGradient</a></li><li><a href="CanvasPattern.html">CanvasPattern</a></li><li><a href="CanvasRenderingContext2D.html">CanvasRenderingContext2D</a></li><li><a href="HTMLCanvasElement.html">HTMLCanvasElement</a></li><li><a href="TextMetrics.html">TextMetrics</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-Math.html">Math</a></li></ul><h3>Classes</h3><ul><li><a href="Blob.html">Blob</a></li><li><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></li></ul>
 </nav>
 
 <br clear="both">

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>getComputed 的值 与 style 的值的区别</title>
+  <style>
+    .demo{
+      font-size: 12pt;
+      color: #139ac4;
+    }
+  </style>
+</head>
+<body>
+   <ol>
+     <li>style 不一定能获取到值，当有内联样式时才能获取到值</li>
+     <li>getComputedStyle 一定能获取到值，并且是最终渲染出来的值[指定尺寸大小的一定会转换成 px 为度量单位的值]</li>
+   </ol>
+   <p class="demo demo1" style="font-size: 18px">demo</p>
+   <p class="demo demo2" style="color:hsl(205,90%,90%)">demo</p>
+   <script>
+    var ps = document.getElementsByTagName('p');
+
+    console.group('demo1')
+    console.log('style:fontSize' + ps[0].style.fontSize + ',color ' + ps[0].style.color);
+    console.log('getComputedStyle:fontSize ' + window.getComputedStyle(ps[0]).fontSize + ',color ' + window.getComputedStyle(ps[0]).color);
+    console.groupEnd();
+
+
+    console.group('demo2')
+    console.log('style:fontSize' + ps[1].style.fontSize + ',color ' + ps[1].style.color);
+    console.log('getComputedStyle:fontSize ' + window.getComputedStyle(ps[1]).fontSize + ',color ' + window.getComputedStyle(ps[1]).color);
+    console.groupEnd();
+   </script>
+</body>
+</html>
