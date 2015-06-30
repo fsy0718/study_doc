@@ -13,7 +13,13 @@
 <body>
   <div class="demo">glow and extra glow effect</div>
   <!--[if IE 9]>
-    <script></script>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+    <script>
+      require.config({
+        baseUrl: '../../_js'
+      })
+      require([html5/drawGrid],function(){})
+    </script>
   <[end if]-->
 </body>
 </html>

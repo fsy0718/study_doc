@@ -1,0 +1,103 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas版知识网络图</title>
+  <style>
+    body,html{
+      width: 100%;
+      height: 100%;
+    }
+    body{
+      margin: 0;
+    }
+    .box{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../example/_js',
+      paths: {
+       echarts: 'http://echarts.baidu.com/build/dist'
+     }
+   })
+
+    require(['echarts','echarts/chart/tree','ajax/ajax'],function(ec,tree,ajax){
+      var getViewInfos = function(){
+        var d = document.documentElement;
+        return {
+          w: d.clientWidth,
+          h: d.clientHeight
+        };
+      }
+
+      var changeView = function(obj,view){
+        for(var p in view){
+          obj.style[p] = view[p];
+        }
+        return obj;
+      }
+
+      var documentElementInfo = getViewInfos();
+      var box = document.querySelector('.box');
+      //changeView(box,documentElementInfo);
+      var options = {
+        title: {
+          text: '知识网络拓扑图'
+        },
+        series: [{
+          name: '树图',
+          type: 'tree',
+          orient: 'horizontal',
+          rootLocation: {x: 100,y: 230},
+          nodePadding: 8,
+          layerPadding: 200,
+          hoverable: false,
+          roam: true,
+          symbolSize: 6,
+          itemStyle: {
+            normal: {
+              color: '#4883b4',
+              label: {
+                show: true,
+                position: 'right',
+                formatter: "{b}",
+                textStyle: {
+                  color: '#000',
+                  fontSize: 5
+                }
+              },
+              lineStyle: {
+                color: '#ccc',
+                type: 'curve' // 'curve'|'broken'|'solid'|'dotted'|'dashed'
+
+              }
+            },
+            emphasis: {
+              color: '#4883b4',
+              label: {
+                show: false
+              },
+              borderWidth: 0
+            }
+          }
+        }]
+      };
+      ajax({
+        type: 'post',
+        url: '../example/_js/doc.json',
+        success: function(json,textStatus,xhr){
+          options.series[0].data = [JSON.parse(json)];
+          ec.init(box).setOption(options);
+        }
+      })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>type检测</title>
+</head>
+<body>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+  require.config({
+    baseUrl: '../../_js'
+  })
+  require(['tool/type'],function(type){
+    var string1 = '1';
+    var number = 1;
+    var array = [];
+    var fn = function(){};
+    var object = {};
+    console.log(type.isString(string1));
+    console.log(type.isNumber(number));
+    console.log(type.isArray(array));
+    console.log(type.isFunction(fn));
+    console.log(type.isFunction(object));
+    console.log(type.isObject(object));
+  })
+  </script>
+</body>
+</html>

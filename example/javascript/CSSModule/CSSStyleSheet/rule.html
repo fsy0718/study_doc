@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSSStyleSheet中的方法实例</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .demo{
+      color: #125;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <p class="demo demo1">test</p>
+  <p class="demo demo2">demo2,this will be changed by click event</p>
+  <button>change the rule</button>
+
+  <script>
+    function addCSSRule(sheet,selector,rules,index){
+      var idx = sheet.cssRules && sheet.cssRules.length || sheet.rules.length;
+      /*if(index > idx){
+        return;
+      }*/
+      if('insertRule' in sheet){
+        var a = sheet.insertRule(selector + '{' + rules + '}',index);
+        console.log(a);
+      }else if('addRule' in sheet){
+        var a = sheet.addRule(selector,rules,index);
+        console.info(a);
+      }
+    }
+
+    function removeCSSRule(sheet,idx){
+      if('deleteRule' in sheet){
+        var a = sheet.deleteRule(idx);
+        console.log(a);
+      }else if('removeRule' in sheet){
+        var a = sheet.removeRule(idx);
+        console.info(a)
+      }
+
+    }
+
+    var btn = document.getElementsByTagName('button')[0];
+    var p = document.getElementsByTagName('p');
+    var demo1 = p[0];
+    var demo2 = p[1];
+    var i = 0;
+    btn.onclick = function(){
+      var sheet = document.styleSheets;
+      sheet = sheet.length ? sheet[0] : (function(){
+        var style = document.createElement('style');
+        document.head.appendChild(style);
+        return document.stylesheets[0];
+      })();
+      if(i%2){
+        removeCSSRule(sheet,2)
+      }else{
+        addCSSRule(sheet,'.demo2','color:red',20);
+      }
+      i++;
+    }
+  </script>
+</body>
+</html>

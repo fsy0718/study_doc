@@ -43,8 +43,7 @@ gulp.task('css3_jsdoc',function(){
 });
 
 gulp.task('index_jsdoc',function(){
-  return gulp.src(['./src/index.md'])
-  .pipe(markdown())
+  return gulp.src(['./src/*.html'])
   .pipe(gulp.dest('./dest'))
 })
 

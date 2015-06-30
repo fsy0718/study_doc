@@ -42,6 +42,15 @@ http.createServer(function(request,response){
         response.end();
       });
       break;
+    case '.json':
+      fs.readFile('./' + request.url,function(err,data){
+        if(err){
+          throw err;
+        }
+        response.writeHead('200');
+        response.end(data);
+      })
+      break;
 
     default:
       var _file = isExampleSource ? './' + request.url : './dest/' + (pathname !== '/' ? pathname : '/index.html');

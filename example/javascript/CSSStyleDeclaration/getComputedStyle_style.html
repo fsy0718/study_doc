@@ -17,18 +17,21 @@
    </ol>
    <p class="demo demo1" style="font-size: 18px">demo</p>
    <p class="demo demo2" style="color:hsl(205,90%,90%)">demo</p>
+
    <script>
     var ps = document.getElementsByTagName('p');
 
     console.group('demo1')
     console.log('style:fontSize' + ps[0].style.fontSize + ',color ' + ps[0].style.color);
     console.log('getComputedStyle:fontSize ' + window.getComputedStyle(ps[0]).fontSize + ',color ' + window.getComputedStyle(ps[0]).color);
+    console.log('获取组合样式font: getComputedAStyle:' + window.getComputedStyle(ps[0]).font + '  , style:' + ps[0].style.font);
     console.groupEnd();
 
 
     console.group('demo2')
     console.log('style:fontSize' + ps[1].style.fontSize + ',color ' + ps[1].style.color);
-    console.log('getComputedStyle:fontSize ' + window.getComputedStyle(ps[1]).fontSize + ',color ' + window.getComputedStyle(ps[1]).color);
+    console.log('getComputedStyle:fontSize ' + window.getComputedStyle(ps[1]).fontSize + '  ,color ' + window.getComputedStyle(ps[1]).color);
+    console.log('获取组合样式font:  getComputedAStyle:' + window.getComputedStyle(ps[1]).font + '  ,style:' + ps[1].style.font);
     console.groupEnd();
    </script>
 </body>

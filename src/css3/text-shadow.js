@@ -9,6 +9,7 @@ define(function(){
      - [canvas中的shadow](../html5/canvas/CanvasRenderingContext2D.html#shadowColor)
    - 实例：
      - [发光效果](../../example/css3/text-shadow/glow.html)
+     - [发光效果canvas效果](../../example/css3/text-shadow/glow_IE9_canvas_shadow.html)
    */
 
 
