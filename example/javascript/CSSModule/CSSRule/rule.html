@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSSRule</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .demo{
+      color: #125;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <p class="demo demo1">test</p>
+  <p class="demo demo2">demo2</p>
+  <button>show CSSRule</button>
+
+  <script>
+    var btn = document.getElementsByTagName('button')[0];
+    var p = document.getElementsByTagName('p');
+    var demo1 = p[0];
+    var demo2 = p[1];
+    btn.onclick = function(){
+      var sheet = document.styleSheets;
+      sheet = sheet.length ? sheet[0] : (function(){
+        var style = document.createElement('style');
+        document.head.appendChild(style);
+        return document.stylesheets[0];
+      })();
+      console.info(sheet.cssRules[0])
+    }
+  </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 /**
  * @class
+ * @classdesc 样式表中的集合，每个样式都是一个{@link CSSRule}
  */
 function CSSRuleList(){}
 

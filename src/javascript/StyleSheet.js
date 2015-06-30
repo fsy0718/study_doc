@@ -18,6 +18,7 @@ StyleSheet.prototype = {
   href: '',
   /**
    * 该样式表是否为disabled状态
+   - [是否启用样式](../../example/javascript/StyleSheetsModule/StyleSheet/disabled.html)
    * @type {Boolean}
    */
   disabled: false,
