@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>验证CSSStyleDeclaration对象的方法</title>
+  <style>
+    *{margin:0;padding:0;}
+    p{
+      font-size: 18px;
+    }
+    .demo2{
+      font-size: 15px!important;
+    }
+  </style>
+  <style></style>
+</head>
+<body>
+  <p>默认第一行，有个默认的样式</p>
+  <p class="demo2">第二行</p>
+  <button data-idx="1">获取第一个p的</button>
+  <button data-idx="2">获取第二个p的</button>
+  <button data-idx="3">更新css</button>
+  <button data-idx="4">getPropertyPriority</button>
+  <button data-idx="5">getPropertyValue</button>
+  <button data-idx="6">item</button>
+  <button data-idx="7">removeProperty</button>
+  <button data-idx="8">setProperty</button>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../_js'
+    })
+
+    require(['event/simple','dom/element'],function(event,dom){
+      'use strict';
+      var btns = document.getElementsByTagName('button');
+      var p = document.getElementsByTagName('p');
+      /**
+       * 设置styleSheet实例的cssText属性
+       * @param {StyleSheet} sheet
+       * @param {string} cssText 规则
+       */
+      function updateStyleSheetCssTextIE(sheet,cssText){
+        sheet.cssText += cssText;
+      }
+
+      function updateStyleSheetStandard(sheet,selector,cssText,index){
+        dom.addCSSRule(sheet,selector,cssText,index);
+      }
+      function updateStyleSheetString(sheet,selector,cssText,index){
+        if(sheet.cssText !== undefined){
+          updateStyleSheetCssTextIE(sheet,selector+'{' + cssText + '}');
+        }else{
+          updateStyleSheetStandard(sheet,selector,cssText,index)
+        }
+      }
+
+      function getCssStyleDeclaration(selector,prop){
+        if(window.getComputedStyle){
+          return prop ? window.getComputedStyle(selector,null)[prop] : window.getComputedStyle(selector,null);
+        }else{
+          return selector.currentStyle(prop)
+        }
+      }
+
+      function getCssValue(selector,prop){
+        return getCssStyleDeclaration(selector,prop);
+      }
+
+      window.sheet = dom.getSheet(0);
+
+      var fns = {
+        '1': function(e,target){
+          var a = getCssStyleDeclaration(p[0]);
+          console.log(a);
+        },
+        '2': function(e,target){
+          var a =  getCssStyleDeclaration(p[1]);
+          console.log(a);
+        },
+        '3': function(e,target){
+          return updateStyleSheetString(sheet,'.demo2','color:red;font-size:16px!important',2);
+        },
+        '4': function(e,target){
+          var a = getCssStyleDeclaration(p[1]).getPropertyPriority('fontSize');
+          console.log(a);
+        },
+        '5': function(e,target){
+          var a = getCssStyleDeclaration(p[1]).getPropertyValue('font-size');
+          console.log(a);
+        },
+        '6': function(e,target){
+          var a = getCssStyleDeclaration(p[1]).item(1000);
+          console.log(a);
+        },
+        '7': function(e,target){
+          var a = getCssStyleDeclaration(p[1]).removeProperty('color');
+          console.log(a);
+        },
+        '8': function(e,target){
+          var a = getCssStyleDeclaration(p[1]).setProperty('color','blue','important');
+          console.log(a);
+        }
+      }
+
+      var clickFn = function(e){
+        var e = window.event || e;
+        var target = e.srcElement || e.targetElement;
+        var idx = target.getAttribute('data-idx');
+        return fns[idx](e,target)
+      }
+      event.on(document.body,'click',clickFn)
+    })
+  </script>
+</body>
+</html>

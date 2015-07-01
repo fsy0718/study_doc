@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IE中CSSStyleSheet中的cssText属性</title>
+  <style>
+    *{margin:0;padding:0;}
+    p{
+      font-size: 18px;
+    }
+  </style>
+  <style></style>
+</head>
+<body>
+  <p>默认第一行，有个默认的样式</p>
+  <p class="demo2">test IE CSSStyleSheet中的cssText属性，此属性不同于HTMLElement实例中style属性上的cssText属性</p>
+  <button>click</button>
+  <script>
+    'use strict';
+    var btn = document.getElementsByTagName('button')[0];
+    /**
+     * 获取StyleSheet实例
+     * @param  {number} idx 位置
+     * @return {StyleSheet}     实例
+     */
+    function getSheet(idx){
+      idx = +idx || 0;
+      var sheet = document.styleSheets;
+      function _getSheet(sheets,idx){
+        var len;
+        if(len = sheets.length){
+          return sheets[Math.min(idx,len)];
+        }
+      }
+      if(!sheet.length){
+        var style = document.createElement('style');
+        document.head.appendChild(style);
+        sheet = document.styleSheets;
+      }
+      return _getSheet(sheet,idx)
+    }
+
+    /**
+     * 设置styleSheet实例的cssText属性
+     * @param {StyleSheet} sheet
+     * @param {string} cssText 规则
+     */
+    function setStyleSheetCssText(sheet,cssText){
+      console.log(sheet.cssText)
+      if(sheet.cssText !== undefined){
+        sheet.cssText += cssText;
+        console.log(sheet.cssText);
+      }
+
+    }
+
+    window.sheet = getSheet(0);
+    btn.onclick = function(){
+      setStyleSheetCssText(sheet,'.demo2{color:red}')
+    }
+
+  </script>
+</body>
+</html>

@@ -31,7 +31,13 @@
         document.head.appendChild(style);
         return document.stylesheets[0];
       })();
-      console.info(sheet.cssRules[0])
+      window.sheet = sheet;
+      if(sheet.cssRules){
+        console.log(sheet.cssRules);
+      }else if(sheet.rules){
+        console.info(sheet.rules)
+      }
+
     }
   </script>
 </body>

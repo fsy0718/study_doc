@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: StyleSheetList</title>
+    <title>JSDoc: Module: window</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: StyleSheetList</h1>
+    <h1 class="page-title">Module: window</h1>
 
     
 
@@ -27,10 +27,8 @@
 
 <header>
     <h2>
-    StyleSheetList
+    window
     </h2>
-    
-        <div class="class-description"><p>一个包含了 StyleSheet 的有序集合。我们可以通过 document.styleSheets 来得到这个集合，然后直接通过下标访问每个 StyleSheet，如 document.styleSheets[0]。StyleSheetList 有一个属性 length 和一个方法 item(index)。Length 表示集合的长度，方法可以通过索引来取得对应的 StyleSheet。</p></div>
     
 </header>
 
@@ -40,22 +38,10 @@
 
     
         
-<dt>
-    <h4 class="name" id="StyleSheetList"><span class="type-signature"></span>new StyleSheetList<span class="signature">()</span><span class="type-signature"></span></h4>
+            <div class="description"><p>window对象</p></div>
+        
 
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-
-    
+        
 <dl class="details">
     
 
@@ -78,7 +64,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="StyleSheetList.js.html">StyleSheetList.js</a>, <a href="StyleSheetList.js.html#line4">line 4</a>
+        <a href="window.js.html">window.js</a>, <a href="window.js.html#line2">line 2</a>
     </li></ul></dd>
     
 
@@ -90,21 +76,7 @@
 </dl>
 
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
+        
     
     </div>
 
@@ -118,76 +90,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="length"><span class="type-signature">&lt;static> </span>length<span class="type-signature"> :Number</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>集合的长度</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">Number</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="StyleSheetList.js.html">StyleSheetList.js</a>, <a href="StyleSheetList.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-</dd>
-
-        </dl>
     
 
     
@@ -196,7 +98,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="item"><span class="type-signature"></span>item<span class="signature">(idx)</span><span class="type-signature"> &rarr; {<a href="StyleSheet.html">StyleSheet</a>}</span></h4>
+    <h4 class="name" id="getComputedStyle"><span class="type-signature">&lt;static> </span>getComputedStyle<span class="signature">(dom, <span class="optional">pseudoElt</span>)</span><span class="type-signature"> &rarr; {<a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a>}</span></h4>
 
     
 </dt>
@@ -204,7 +106,7 @@
 
     
     <div class="description">
-        <p>返回指定位置上的StyleSheet</p>
+        <p>得出所有在应用有效的样式和分解任何可能会包含值的基础计算后的元素的CSS属性值</p>
     </div>
     
 
@@ -226,6 +128,8 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
         
 
@@ -238,23 +142,64 @@
 
         <tr>
             
-                <td class="name"><code>idx</code></td>
+                <td class="name"><code>dom</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type"><a href="HTMLElement.html">HTMLElement</a></span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>指定位置</p></td>
+            <td class="description last"><p>用于计算样式的元素</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pseudoElt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>指定一个伪元素进行匹配。对于常规的元素来说可省略</p></td>
         </tr>
 
     
@@ -285,7 +230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="StyleSheetList.js.html">StyleSheetList.js</a>, <a href="StyleSheetList.js.html#line18">line 18</a>
+        <a href="window.js.html">window.js</a>, <a href="window.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -319,7 +264,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="StyleSheet.html">StyleSheet</a></span>
+<span class="param-type"><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></span>
 
 
     </dd>

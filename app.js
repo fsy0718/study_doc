@@ -16,7 +16,7 @@ http.createServer(function(request,response){
           throw err;
         }
         response.writeHead(200,{
-          "Context-Type":{
+          "Content-Type":{
              ".css" : "text/css",
              ".js" : "application/javascript",
           }[ext]
@@ -26,7 +26,7 @@ http.createServer(function(request,response){
       });
       break;
     case '.ico':
-      response.writeHead('404',{'Context-Type':'text/plain'});
+      response.writeHead('404',{'Content-Type':'text/plain'});
       response.end('Not Found');
       break;
     case '.png':
@@ -36,7 +36,7 @@ http.createServer(function(request,response){
           throw err;
         }
         response.writeHead(200,{
-          'Context-Type':'image/*'
+          'Content-Type':'image/*'
         });
         response.write(data);
         response.end();
@@ -58,14 +58,14 @@ http.createServer(function(request,response){
           fs.readFile(file,'utf-8',function(err,data){
             if(err){
               if(file === './dest/index.html'){
-                response.writeHead('404',{'Context-Type':'text/plain'});
+                response.writeHead('404',{'Content-Type':'text/plain'});
                 response.end('404 Not Found');
                 return;
               }
               file = './dest/index.html';
               return readFile(file);
             }
-            response.writeHead(200,{'Context-Type':'text/html'});
+            response.writeHead(200,{'Content-Type':'text/html'});
             response.write(data);
             response.end();
           })

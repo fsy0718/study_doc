@@ -194,6 +194,75 @@
         
             
 <dt>
+    <h4 class="name" id="cssText"><span class="type-signature"></span>cssText<span class="type-signature"> :String</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>IE专用，返回当前样式表，可以用来直接操作样式表，此属性不放入StyleSheet，因为觉得styleSheets已经是CSSStyleSheet的实例了，虽然是StyleSheet的子类，IE不能查到原型，故放在此</p>
+<ul>
+<li><a href="../../example/javascript/CSSModule/CSSStyleSheet/cssText.html">在IE中利用CSSStyleSheet中的cssText属性操作样式表</a></li>
+</ul>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">String</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="disabled"><span class="type-signature"></span>disabled<span class="type-signature"> :Boolean</span></h4>
 
     
@@ -621,6 +690,72 @@
         
             
 <dt>
+    <h4 class="name" id="rules"><span class="type-signature"></span>rules<span class="type-signature"> :Object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>返回样式表中css规则的类数组对象 IE支持,也是一个CSSRuleList对象</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="title"><span class="type-signature">&lt;readonly> </span>title<span class="type-signature"> :DOMString</span></h4>
 
     
@@ -904,7 +1039,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line49">line 49</a>
+        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -1033,7 +1168,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line41">line 41</a>
+        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -1071,9 +1206,10 @@
 
     
     <div class="description">
-        <p>向样式表中添加一条新规则 IE9+支持</p>
+        <p>向样式表中添加一条新规则 IE9+支持 <strong>cssRules中是CSSRuleList的实例 CSSRuleList中包含的是CSSStyleRule CSSStyleRule是CSSRule的实例 而CSSStyleRule中的style是CSSStyleDeclaration的实例</strong></p>
 <ul>
 <li><a href="../../example/javascript/CSSModule/CSSStyleSheet/rule.html">添加样式实例</a></li>
+<li><a href="../../example/javascript/cssModule/CSSStyleDeclaration/getComputedStyle.html">在cssRules中操作CSSStyleDeclaration</a></li>
 </ul>
     </div>
     
@@ -1178,7 +1314,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line36">line 36</a>
+        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -1319,7 +1455,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line54">line 54</a>
+        <a href="CSSStyleSheet.js.html">CSSStyleSheet.js</a>, <a href="CSSStyleSheet.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -1362,13 +1498,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-CSSModule.html">CSSModule</a></li><li><a href="module-JSON.html">JSON</a></li><li><a href="module-Math.html">Math</a></li><li><a href="module-StyleSheetsModule.html">StyleSheetsModule</a></li></ul><h3>Classes</h3><ul><li><a href="Blob.html">Blob</a></li><li><a href="CSSRule.html">CSSRule</a></li><li><a href="CSSRuleList.html">CSSRuleList</a></li><li><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></li><li><a href="CSSStyleRule.html">CSSStyleRule</a></li><li><a href="CSSStyleSheet.html">CSSStyleSheet</a></li><li><a href="DocumentStyle.html">DocumentStyle</a></li><li><a href="DOMTokenList.html">DOMTokenList</a></li><li><a href="LinkStyle.html">LinkStyle</a></li><li><a href="MediaList.html">MediaList</a></li><li><a href="StyleSheet.html">StyleSheet</a></li><li><a href="StyleSheetList.html">StyleSheetList</a></li><li><a href="XMLHttpRequest.html">XMLHttpRequest</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-CSSModule.html">CSSModule</a></li><li><a href="module-JSON.html">JSON</a></li><li><a href="module-Math.html">Math</a></li><li><a href="module-StyleSheetsModule.html">StyleSheetsModule</a></li><li><a href="module-window.html">window</a></li></ul><h3>Classes</h3><ul><li><a href="Blob.html">Blob</a></li><li><a href="CSSRule.html">CSSRule</a></li><li><a href="CSSRuleList.html">CSSRuleList</a></li><li><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></li><li><a href="CSSStyleRule.html">CSSStyleRule</a></li><li><a href="CSSStyleSheet.html">CSSStyleSheet</a></li><li><a href="DocumentStyle.html">DocumentStyle</a></li><li><a href="DOMTokenList.html">DOMTokenList</a></li><li><a href="HTMLElement.html">HTMLElement</a></li><li><a href="LinkStyle.html">LinkStyle</a></li><li><a href="MediaList.html">MediaList</a></li><li><a href="StyleSheet.html">StyleSheet</a></li><li><a href="StyleSheetList.html">StyleSheetList</a></li><li><a href="XMLHttpRequest.html">XMLHttpRequest</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 30 2015 23:22:54 GMT+0800 (CST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Wed Jul 01 2015 17:00:04 GMT+0800 (中国标准时间)
 </footer>
 
 <script> prettyPrint(); </script>

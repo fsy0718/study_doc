@@ -12,7 +12,8 @@ define(function(){
      */
     classList : (function(){
       !!document.body.classList
-    })()
+    })(),
+    w3cEvent: window.addEventListener
   }
   return support;
 })
