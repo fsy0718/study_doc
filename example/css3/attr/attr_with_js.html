@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>利用attr简单todo</title>
+  <style>
+    .done{
+      text-decoration: line-through;
+      color: gray;
+    }
+    li:before{
+      content: attr(data-people);
+    }
+  </style>
+</head>
+<body>
+  <input type="radio" name="people" value="A">A
+  <input type="radio" name="people" value="B">B
+  <ul>
+    <li>做饭</li>
+    <li>洗衣</li>
+    <li>整理书</li>
+  </ul>
+  <script>
+    function getPeople(){
+      var peopleIpt = document.querySelector('input:checked');
+      var people;
+      if(peopleIpt){
+        people = peopleIpt.value;
+      }
+      return people;
+    }
+
+    var houseWorkList = document.querySelector('ul');
+
+    houseWorkList.addEventListener('click',function(e){
+      var target = e.target;
+      var people = getPeople();
+      if(people){
+        target.setAttribute('data-people',people);
+        target.classList.add('done')
+      }else if(target.getAttribute('data-people')){
+        target.removeAttribute('data-people');
+        target.classList.remove('done')
+      }
+    },false)
+  </script>
+</body>
+</html>

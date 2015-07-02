@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>attr</title>
+  <style>
+    .li1:before{
+      content: attr(data-foo) ' ';
+    }
+    .li2:before{
+      content: attr(red);
+    }
+    li[data-line]:after{
+      content: '[line' attr(data-line) ']';
+    }
+    li[fsy]:after{
+      content: attr(fsy);
+    }
+    .li5:after{
+      content: attr(data-value);
+    }
+  </style>
+</head>
+<body>
+<h1>attr只能用于content且在伪元素中，IE8+支持,可以用在字符串连接中</h1>
+  <ul>
+    <li data-foo="hello" class="li1">world</li>
+    <li class="li2">world</li>
+    <li data-line="3"></li>
+    <li fsy="aho" class="li4"></li>
+    <li data-value="未选中" class="li5" ></li>
+  </ul>
+  <script>
+  var li5 = document.querySelector('.li5');
+  var values = ['选中','未选中'];
+  var clicked = 0;
+  li5.onclick = function(){
+    var _clicked = clicked++ % 2
+    var _value = values[_clicked]
+    console.log(_value)
+    this.setAttribute('data-value',_value)
+  }
+  </script>
+</body>
+</html>

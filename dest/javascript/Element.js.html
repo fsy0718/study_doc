@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: window.js</title>
+    <title>JSDoc: Source: Element.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -18,7 +18,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: window.js</h1>
+    <h1 class="page-title">Source: Element.js</h1>
 
     
 
@@ -26,27 +26,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>define(function(){
-  /**
-   * @module window
-   * @description window对象 ：
-   * @type {Object}
-   */
-  var exports = {
-  /**
-   * 得出所有在应用有效的样式和分解任何可能会包含值的基础计算后的元素的CSS属性值【返回的是used value，参考[jQuery 源码：操作样式](http://www.cnblogs.com/yaozhiyi/archive/2013/01/22/2868733.html)】
-   ###### 浏览器支持如下:
-   - 支持：&lt;strong class="iconfont browser" data-browser="ie" data-version="9+">IE&lt;/strong>&lt;strong class="iconfont browser" data-browser="chrome">chrome&lt;/strong>&lt;strong class="iconfont browser" data-browser="firefox">firefox&lt;/strong>&lt;strong class="iconfont browser" data-browser="safari">safari&lt;/strong>
-   - 不支持：&lt;strong class="iconfont browser" data-support="false" data-browser="ie" data-version="8-">IE8-&lt;/strong>  请用[HTMLElement#currentStyle](/javascript/HTMLElement.html#currentStyle)
-     * @param  {HTMLElement} dom 用于计算样式的元素
-     * @param  {string}  [pseudoElt]   指定一个伪元素进行匹配。对于常规的元素来说可省略
-     * @return {CSSStyleDeclaration}
-     */
-    getComputedStyle: function(dom,pseudoElt){}
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
+ * @classdesc 接口是 Document的一个对象. 这个接口描述了所有相同种类的元素所普遍具有的方法和属性
+ */
+function Element(){}
 
-  }
-  return exports;
-})</code></pre>
+/**
+   * 返回一个包含元素 class 属性的 token list
+   * @extends {DOMTokenList}
+   * @inheritDoc
+ */
+function classList(){}
+/**
+ *  切换一个 class 是否存在于一个元素的 class 列表中
+ * @param  {string}  attributeName 需要toggle的类名
+ * @param  {Boolean} [isTrue]       false表示移除 true表示添加
+
+ */
+classList.prototype.toggle = function(attributeName,isTrue){}
+
+/**
+ * @borrows classList as Element.classList
+ * @type {Object}
+ */
+Element.prototype = {
+  getAttribute: function(attributeName){},
+  setAttribute: function(attributeName,value){},
+  removeAttribute: function(attributeName){},
+  getBoundingClientRect: function(){},
+  classList: classList
+}
+
+</code></pre>
         </article>
     </section>
 

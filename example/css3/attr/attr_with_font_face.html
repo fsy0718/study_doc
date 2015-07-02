@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>attr返回的字符串不能用于font-face技术中的content</title>
+  <style>
+    *{margin:0;padding:0;}
+    ul{list-style:outside decimal none;width: 50%;margin: 50px auto;}
+    li{
+      margin-bottom: 20px;
+    }
+    @font-face {
+      font-family: 'iconfont';
+      src: url('//at.alicdn.com/t/font_1435810614_6727521.eot'); /* IE9*/
+      src: url('//at.alicdn.com/t/font_1435810614_6727521.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('//at.alicdn.com/t/font_1435810614_6727521.woff') format('woff'), /* chrome、firefox */
+      url('//at.alicdn.com/t/font_1435810614_6727521.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+      url('//at.alicdn.com/t/font_1435810614_6727521.svg#iconfont') format('svg'); /* iOS 4.1- */
+    }
+
+    .iconfont{
+      font-family: 'iconfont' !important;
+      font-size: 16px;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 浏览器图标 */
+    .browser{
+      font: 0/0 a;
+    }
+    .browser[data-browser]{
+      position: relative;
+      margin: 0 5px;
+      line-height: 24px;
+    }
+
+
+    .browser[data-browser]:before{
+      font-size: 24px;
+      color: red;
+      padding: 5px;
+      border-radius: 5px;
+      background: rgba(0,0,0,0.5);
+    }
+    .browser[data-browser="ie"]:before{
+      content: '\e604';
+    }
+    .browser[data-version]:after{
+      content: attr(data-version);
+      font-size: 12px;
+      position: absolute;
+      top: -27px;
+      left: 3px;
+      color: #fff;
+      word-spacing: -2px;
+      font-weight: 900;
+    }
+
+    /* 浏览器不支持 */
+    .browser[data-support="false"]:before{
+      color: gray;
+      background: rgba(0,0,0,0.1);
+    }
+
+    .browser[data-support="false"].browser[data-version]:after{
+      color: rgba(0,0,255,0.5);
+    }
+
+    /* 错误的使用 */
+    .error .browser[data-browser]:before{
+      content: attr(data-browser);
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li><strong class="iconfont browser" data-browser="ie" data-version="9+">IE9+</strong>支持getComputedStyle</li>
+    <li><strong class="iconfont browser" data-browser="ie" data-version="8-" data-support="false">IE8-</strong>不支持getComputedStyle</li>
+    <li class="error"><strong class="iconfont browser" data-browser="\e064">IE图标不显示，attr返回的字符串不能用于font-face的content</strong></li>
+</body>
+</html>

@@ -11,6 +11,7 @@
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="../../example/_css/doc.css">
 </head>
 
 <body>
@@ -76,7 +77,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="HTMLElement.js.html">HTMLElement.js</a>, <a href="HTMLElement.js.html#line4">line 4</a>
+        <a href="HTMLElement.js.html">HTMLElement.js</a>, <a href="HTMLElement.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -107,6 +108,12 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        <ul>
+            <li><a href="Element.html">Element</a></li>
+        </ul>
+    
 
     
 
@@ -122,14 +129,22 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="style"><span class="type-signature"></span>style<span class="type-signature"> :<a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></span></h4>
+    <h4 class="name" id="currentStyle"><span class="type-signature">&lt;readonly> </span>currentStyle<span class="type-signature"> :Object</span></h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>返回包含当前节点style属性的CSSStyleDeclaration对象</p>
+        <p><strong class="iconfont browser" data-browser="ie">IE</strong>
+    返回当前的样式【类似specified value的值，参考<a href="http://www.cnblogs.com/yaozhiyi/archive/2013/01/22/2868733.html">jquery源码：操作样式</a>】 <a href="../../example/javascript/HTMLElement/currentStyle.html">currentStyle与style的区别</a></p>
+<ul>
+<li>返回的样式不是最终计算的样式 <strong>如font-size: 1em,返回的也是1em</strong><ul>
+<li><a href="../../example/javascript/HTMLElement/pixelLeft.html">利用pixelLeft获取单位为px的结果</a></li>
+</ul>
+</li>
+<li>不能查询复合样式 复合样式在IE9+是返回空字符串，IE8-是返回undefined</li>
+</ul>
     </div>
     
 
@@ -138,7 +153,7 @@
         <ul>
             <li>
                 
-<span class="param-type"><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -168,7 +183,147 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="HTMLElement.js.html">HTMLElement.js</a>, <a href="HTMLElement.js.html#line11">line 11</a>
+        <a href="HTMLElement.js.html">HTMLElement.js</a>, <a href="HTMLElement.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="runtimeStyle"><span class="type-signature"></span>runtimeStyle<span class="type-signature"> :Object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p><strong class="iconfont browser" data-browser="ie">IE</strong>
+    设置当前节点的样式，设置的样式只能通过currentStyle访问，通过style属性不能访问</p>
+<ul>
+<li><a href="http://hedgehogking.com/?p=169">runtimeStyle的用法</a></li>
+<li><a href="http://www.cnblogs.com/birdshome/archive/2006/04/24/runtimestyle.html">rumtimeStyle属性</a></li>
+</ul>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="HTMLElement.js.html">HTMLElement.js</a>, <a href="HTMLElement.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="style"><span class="type-signature"></span>style<span class="type-signature"> :Object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>返回包含当前节点style属性对象 <strong>webkit是<a href="CSSStyleDeclaration.html"><code>CSSStyleDeclaration</code></a>对象，IE是MSStyleCSSProperties对象【IE8-是object Object对象】 moz返回CSS2Properties对象</strong></p>
+<ul>
+<li>是特殊的CSSStyleDeclaration对象，可以获取复合属性【当style属性中设置了复合属性】，而且获取的也不是最终计算值 <a href="../../example/javascript/CSSModule/CSSStyleDeclaration/getComputedStyle_style.html">实例</a></li>
+</ul>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="HTMLElement.js.html">HTMLElement.js</a>, <a href="HTMLElement.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -203,13 +358,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-CSSModule.html">CSSModule</a></li><li><a href="module-JSON.html">JSON</a></li><li><a href="module-Math.html">Math</a></li><li><a href="module-StyleSheetsModule.html">StyleSheetsModule</a></li><li><a href="module-window.html">window</a></li></ul><h3>Classes</h3><ul><li><a href="Blob.html">Blob</a></li><li><a href="CSSRule.html">CSSRule</a></li><li><a href="CSSRuleList.html">CSSRuleList</a></li><li><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></li><li><a href="CSSStyleRule.html">CSSStyleRule</a></li><li><a href="CSSStyleSheet.html">CSSStyleSheet</a></li><li><a href="DocumentStyle.html">DocumentStyle</a></li><li><a href="DOMTokenList.html">DOMTokenList</a></li><li><a href="HTMLElement.html">HTMLElement</a></li><li><a href="LinkStyle.html">LinkStyle</a></li><li><a href="MediaList.html">MediaList</a></li><li><a href="StyleSheet.html">StyleSheet</a></li><li><a href="StyleSheetList.html">StyleSheetList</a></li><li><a href="XMLHttpRequest.html">XMLHttpRequest</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-CSSModule.html">CSSModule</a></li><li><a href="module-JSON.html">JSON</a></li><li><a href="module-Math.html">Math</a></li><li><a href="module-StyleSheetsModule.html">StyleSheetsModule</a></li><li><a href="module-window.html">window</a></li></ul><h3>Classes</h3><ul><li><a href="Blob.html">Blob</a></li><li><a href="CSSRule.html">CSSRule</a></li><li><a href="CSSRuleList.html">CSSRuleList</a></li><li><a href="CSSStyleDeclaration.html">CSSStyleDeclaration</a></li><li><a href="CSSStyleRule.html">CSSStyleRule</a></li><li><a href="CSSStyleSheet.html">CSSStyleSheet</a></li><li><a href="DocumentStyle.html">DocumentStyle</a></li><li><a href="DOMTokenList.html">DOMTokenList</a></li><li><a href="Element.html">Element</a></li><li><a href="HTMLElement.html">HTMLElement</a></li><li><a href="LinkStyle.html">LinkStyle</a></li><li><a href="MediaList.html">MediaList</a></li><li><a href="StyleSheet.html">StyleSheet</a></li><li><a href="StyleSheetList.html">StyleSheetList</a></li><li><a href="XMLHttpRequest.html">XMLHttpRequest</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Wed Jul 01 2015 18:28:20 GMT+0800 (中国标准时间)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Thu Jul 02 2015 18:03:39 GMT+0800 (中国标准时间)
 </footer>
 
 <script> prettyPrint(); </script>

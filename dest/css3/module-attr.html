@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: attr</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="../../example/_css/doc.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: attr</h1>
+
+    
+
+
+
+<section>
+
+<header>
+    <h2>
+    attr
+    </h2>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+            <div class="description"><p>用来获取选择到的元素的某一HTML属性值，并用于其样式。它也可以用于伪元素，属性值采用伪元素所依附的元素。</p></div>
+        
+
+        
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="attr.js.html">attr.js</a>, <a href="attr.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="attr"><span class="type-signature">&lt;static> </span>attr<span class="signature">(attribute, <span class="optional">typeOrUnit</span>, <span class="optional">fallback</span>)</span><span class="type-signature"> &rarr; {css}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>返回css属性</p>
+<h6>浏览器支持如下:</h6><p>   <strong class="iconfont browser" data-browser="ie" data-version="9+">IE</strong><strong class="iconfont browser" data-browser="chrome">chrome</strong><strong class="iconfont browser" data-browser="firefox">firefox</strong><strong class="iconfont browser" data-browser="safari" data-version="3.1+">safari</strong><strong class="iconfont browser" data-browser="opera" data-version="9+">safari</strong></p>
+<h6>实例如下:</h6><ul>
+<li><a href="../../example/css3/attr/attr.html">基本展示</a></li>
+<li><a href="../../example/css3/attr/attr_with_js.html">利用attr做简单todo</a></li>
+<li><a href="../../example/css3/attr/attr_with_font_face.html">attr与font-face结合失败</a> 返回的字符串不能用于font-face技术的content</li>
+</ul>
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attribute</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>css引用的HTML属性名称</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>typeOrUnit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last"><p>表示所引用的属性值的单位。如果该单位相对于所引用的属性值不合法，那么attr()表达式也不合法。若省略，则默认值为string。其合法值<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr">查看</a> 目前全面支持的仅有string</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>如果HTML元素缺少所规定的属性值或属性值不合法，则使用fallback值。该值必须合法，且不能包含另一个attr()表达式。如果attr()不是所在CSS属性值的唯一值，其<fallback>值必须为<type-or-unit>所指定的类型，否则CSS会使用相应<type-or-unit>定义的默认值</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="attr.js.html">attr.js</a>, <a href="attr.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">css</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-attr.html">attr</a></li><li><a href="module-textShadow.html">textShadow</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Thu Jul 02 2015 18:03:38 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

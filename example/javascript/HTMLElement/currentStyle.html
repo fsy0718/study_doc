@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>currentStyle 的值 与 style 的值的区别</title>
+  <style>
+    .demo{
+      font-size: 12pt;
+      color: #139ac4;
+    }
+  </style>
+</head>
+<body>
+   <ol>
+     <li>style 不一定能获取到值，当有内联样式时才能获取到值</li>
+     <li>currentStyle 一定能获取到单属性值</li>
+   </ol>
+   <p class="demo demo1" style="font-size: 18px">demo</p>
+   <p class="demo demo2" style="color:hsl(205,90%,90%);font: 1.5em/18px Arial">demo</p>
+
+   <script>
+    var ps = document.getElementsByTagName('p');
+    window.p = ps[0].style
+    console.group('demo1')
+    console.log('fontSize: style[' + ps[0].style.fontSize + '] currentStyle[' + ps[0].currentStyle.fontSize + ']');
+    console.log('color: style[' + ps[0].style.color + '] currentStyle[' + ps[0].currentStyle.color + ']');
+    console.log('获取组合样式font: style[' + ps[0].style.font + '] currentStyle[' + ps[0].currentStyle.font + ']');
+    console.groupEnd();
+
+
+    console.group('demo2')
+    console.log('fontSize: style[' + ps[1].style.fontSize + '] currentStyle[' + ps[1].currentStyle.fontSize + ']');
+    console.log('color: style[' + ps[1].style.color + '] currentStyle[' + ps[1].currentStyle.color + ']');
+    console.log('获取组合样式font: style[' + ps[1].style.font + '] currentStyle[' + ps[1].currentStyle.font + ']');
+    console.groupEnd();
+   </script>
+</body>
+</html>
