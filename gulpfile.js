@@ -47,6 +47,21 @@ gulp.task('index_jsdoc',function(){
   .pipe(gulp.dest('./dest'))
 })
 
+gulp.task('node_jsdoc',function(){
+  return gulp.src(['./src/node/*.js'])
+  .pipe(jsdoc.parser({
+    plugins: ['plugins/markdown'],
+    name: 'node'
+  }))
+  .pipe(jsdoc.generator('./dest',null,{
+    'private': true,
+    monospaceLinks: true,
+    cleverLinks: true,
+    outputSourceFiles: true
+  }))
+  //.pipe(gulp.dest('./dest'))
+})
+
 gulp.task('js_jsdoc',function(){
   return gulp.src(['./src/javascript/*.js'])
   .pipe(jsdoc.parser({
@@ -83,6 +98,6 @@ gulp.task('mddoc',function(){
   .pipe(gulp.dest('md'))
 })
 
-gulp.task('jsdoc',['canvas_jsdoc','js_jsdoc','index_jsdoc','css3_jsdoc'])
+gulp.task('jsdoc',['canvas_jsdoc','js_jsdoc','index_jsdoc','css3_jsdoc','node_jsdoc'])
 
 gulp.task('doc',['jsdoc','imgmin'])
