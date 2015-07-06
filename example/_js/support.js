@@ -13,7 +13,8 @@ define(function(){
     classList : (function(){
       !!document.body.classList
     })(),
-    w3cEvent: window.addEventListener
+    w3cEvent: window.addEventListener,
+    computedStyle: window.getComputedStyle
   }
   return support;
 })

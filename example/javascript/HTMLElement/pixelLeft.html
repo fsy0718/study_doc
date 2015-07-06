@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>pixelLeft来获取精确值</title>
   <style>
     *{margin:0;padding:0;}
     .demo{width: 500px;border:1px solid red;margin: 50px auto;font-size:16px;}
@@ -17,21 +17,36 @@
   </div>
   <button>currentStyle</button>
   <button>currentStyle_pixelLeft</button>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
   <script>
-  var demo = document.getElementsByTagName('div')[0];
-  var p = document.getElementsByTagName('p')[0];
-  var btns = document.getElementsByTagName('button');
-  var btn1 = btns[0];
-  var btn2 = btns[1];
+  require.config({
+    baseUrl: '../../_js'
+  })
+  require(['dom/element'],function(element){
+    var demo = document.getElementsByTagName('div')[0];
+    var p = document.getElementsByTagName('p')[0];
+    var btns = document.getElementsByTagName('button');
+    var btn1 = btns[0];
+    var btn2 = btns[1];
 
-  btn1.onclick = function(){
-    console.log(p.currentStyle.fontSize);
-    console.log(p.currentStyle.marginLeft);
-  }
+    btn1.onclick = function(){
+      var fz,ml;
+      if(window.getComputedStyle){
+        fz = element.css(p,'fontSize');
+        ml = element.css(p,'marginLeft');
+      }else{
+        fz = p.currentStyle.fontSize;
+        ml = p.currentStyle.marginLeft
+      }
+      console.log('fontSize:' + fz);
+      console.log('marginLeft:' + ml);
+    }
 
-  btn2.onclick = function(){
-    var r = p.currentStyle.fontSize
-  }
+    btn2.onclick = function(){
+      console.log('fontSize:' + element.css(p,'fontSize'));
+      console.log('marginLeft:' + element.css(p,'marginLeft'));
+    }
+  });
   </script>
 </body>
 </html>

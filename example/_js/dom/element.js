@@ -1,4 +1,4 @@
-define(['support'],function(support){
+define(['support','tool/type'],function(support,type){
   var element = {};
   /**
    * 获取StyleSheet实例
@@ -87,6 +87,53 @@ define(['support'],function(support){
         element.addClass(dom,className);
       }
       return dom;
+    }
+  }
+
+  function setCss(dom,key,val,mutiple){
+    if(mutiple){
+      var _cssText = dom.style.cssText;
+      console.log(_cssText);
+      var cssText = ''
+      for(var i in key){
+        cssText += i + ':' + key[i] + ';'
+      }
+      dom.style.cssText = _cssText + cssText;
+    }else{
+      dom.style[key] = val;
+    }
+
+  }
+
+  var rnumnonpx = /^-?(?:\d*\.)?\d+(?!px)[^\d\s]+$/i
+  var rposition = /^(top|right|bottom|left)$/
+
+  function getCss(dom,key){
+    if(support.computedStyle){
+      return window.getComputedStyle(dom,null)[key];
+    }else{
+      var currentStyle = dom.currentStyle;
+      var curCss = dom.currentStyle[key];
+      if(rnumnonpx.test(curCss) && !rposition.test(curCss)){
+        var style = dom.style;
+        var left = style.left;
+        var rsLeft = dom.runtimeStyle.left;
+        dom.runtimeStyle.left = currentStyle.left;
+        style.left = key === 'fontSize' ? '1em' : (curCss || 0);
+        curCss = style.pixelLeft + 'px';
+        style.left = left;
+        dom.runtimeStyle.left = rsLeft;
+      }
+      return curCss;
+    }
+  }
+
+  element.css = function(dom,key,val){
+    var mutiple = type.isObject(key);
+    if(val || mutiple){
+      return setCss(dom,key,val,mutiple)
+    }else{
+      return getCss(dom,key);
     }
   }
 
