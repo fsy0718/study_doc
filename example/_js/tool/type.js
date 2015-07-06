@@ -1,31 +1,27 @@
-define(function(){
-  var types = ['String','Number','Boolean','Object','Function'];
-  var objectToString = Object.prototype.toString;
-  var reg = /\[object (\w+)\]/
-  function _type(param){
-    var _typeof = objectToString.call(param)
-    var components = _typeof.match(reg);
-    return components && components[1];
-  }
+define(['../core'],function(Fsy){
+  var class2type = {};
+  var serialize = Object.prototype.toString;
+  var rword = /[^, ]+/g;
+  'String Number Boolean RegExp Function Array Object Date Error'.replace(rword,function(name){
+      class2type['[object ' + name + ']'] = name.toLowerCase();
+  });
 
-  var type = {},len = types.length,i = 0;
-  while(i < len){
-    (function(i){
-      var __type = types[i];
-      type['is' + __type]  = function(param){
-        return _type(param) === __type;
-      }
-    })(i)
-
-    i++;
+  function type(obj){
+    if(obj == null){
+      return String(obj);
+    }
+    return typeof obj === 'object' || typeof obj === 'function' ? class2type[serialize.call(obj)] || 'object' : typeof obj
   }
 
 
-  type.isArray = type.isFunction(Array.isArray) ? function(param){
-    return Array.isArray(param);
-  } : function(param){
-    return objectToString.call(param) === '[object Array]';
+  /*IE 678 typeof alert object */
+  Fsy.fn.isFunction = typeof alert === 'object' ? function(fn){
+    try{
+      return /^\s*\bfunction\b/.test(fn + '');
+    }catch(e){
+      return false;
+    }
+  } : function(fn){
+    return serialize.call(fn) === '[object Function]'
   }
-  return type;
-
 })
