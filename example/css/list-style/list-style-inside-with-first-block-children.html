@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>list-style与overflow</title>
+  <style>
+  *{
+    margin:0;
+    padding: 0;
+  }
+  ul{
+    list-style: disc inside none;
+    border: solid 1px red;
+    width: 500px;
+    margin: 20px auto;
+  }
+  </style>
+</head>
+<body>
+  <button>修复</button>
+  <ul>
+    <li><h4>1</h4><p>content</p></li>
+    <li><h4>2</h4><p>content</p></li>
+    <li><h4>3</h4><p>content</p></li>
+    <li><h4>4</h4><p>content</p></li>
+    <li><h4>5</h4><p>content</p></li>
+    <li><h4>6</h4><p>content</p></li>
+  </ul>
+  <script>
+    var h4 = document.getElementsByTagName('h4');
+    var len = h4.length;
+    var j = 0;
+    function getLastSheet(){
+      var sheets = document.styleSheets;
+      function _getSheet(sheets){
+        if(sheets.length){
+          return sheets[sheets.length - 1];
+        }
+      }
+      if(!sheets.length){
+        var style = document.createElement('style');
+        document.head.appendChild(style);
+        sheets = document.styleSheets;
+      }
+      return _getSheet(sheets)
+
+    }
+
+    function addRule(sheet,selector,rule,index){
+      var idx = sheet.cssRules && sheet.cssRules.length || sheet.rules.length;
+      var index = Math.min(idx,+index) || 0;
+      if('insertRule' in sheet){
+        return sheet.insertRule(selector + '{' + rule + '}',index)
+      }
+      else if('addRule' in sheet){
+        return sheet.addRule(selector,rule,index)
+      }
+    }
+
+    function fixedBug(){
+      if(j){
+        return false;
+      }
+      j++;
+      var sheet = getLastSheet();
+      addRule(sheet,'li h4','display: inline-block;*zoom:1;*display:inline',2);
+      return
+    }
+
+    var btn = document.getElementsByTagName('button')[0];
+    btn.onclick = function(){
+      return fixedBug();
+    }
+  </script>
+</body>
+</html>

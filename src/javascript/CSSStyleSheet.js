@@ -47,7 +47,7 @@ CSSStyleSheet.prototype = {
    */
   deleteRule: function(idx){},
   /**
-   * 添加规则 **IE专用[chrome也有]**
+   * 添加规则 **<strong class="iconfont browser" data-browser="ie">IE</strong>专用[chrome也有]**
    * @param {DOMString} selector
    * @param {string} rule     规则
    * @param {number} idx      位置，如果大于cssRules中索引的最大值【即rules.length】，会默认为rules.length
@@ -60,7 +60,7 @@ CSSStyleSheet.prototype = {
    */
   removeRule: function(idx){},
   /**
-   * IE专用，返回当前样式表，可以用来直接操作样式表，此属性不放入StyleSheet，因为觉得styleSheets已经是CSSStyleSheet的实例了，虽然是StyleSheet的子类，IE不能查到原型，故放在此
+   * <strong class="iconfont browser" data-browser="ie">IE</strong>专用，返回当前样式表，可以用来直接操作样式表，此属性不放入StyleSheet，因为觉得styleSheets已经是CSSStyleSheet的实例了，虽然是StyleSheet的子类，IE不能查到原型，故放在此
    - [在IE中利用CSSStyleSheet中的cssText属性操作样式表](../../example/javascript/CSSModule/CSSStyleSheet/cssText.html)
    * @type {String}
    */

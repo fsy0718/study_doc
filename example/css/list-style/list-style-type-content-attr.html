@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>利用content和attr属性模拟列表选项</title>
+  <style>
+      ul{
+        list-style-type: none;
+
+      }
+      li{
+        margin-bottom: 10px;
+      }
+      li:before{
+        content: attr(data-index) '.';
+        padding-right: 10px;
+      }
+    </style>
+</head>
+<body>
+  <ul>
+    <li data-index="A"><input type="text"><a href="javascript:;" class="add" tabindex="-1">添加</a></li>
+  </ul>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../_js'
+    })
+    require(['event/simple','dom/element'],function(event,element){
+      var STARTCODE = 65;
+      var tpl = '<input type="text"><a href="javascript:;" class="del" tabindex="-1">删除</a>'
+      var ul = document.getElementsByTagName('ul')[0];
+      var lis = ul.getElementsByTagName('li');
+      var lastCode = 65 + lis.length;
+      function addOpt(){
+        var newLi = document.createElement('li');
+        newLi.setAttribute('data-index',String.fromCharCode(lastCode));
+        newLi.innerHTML = tpl;
+        ul.appendChild(newLi);
+        lastCode++;
+      }
+
+      function delOpt(context){
+        ul.removeChild(context);
+      }
+
+      event.on(ul,'click',function(e){
+        var target = e.target;
+        if(element.hasClass(target,'add')){
+          addOpt();
+        }
+        else if(element.hasClass(target,'del')){
+          var li = target.parentNode;
+          delOpt(li);
+        }
+
+      })
+    })
+
+
+
+  </script>
+</body>
+</html>

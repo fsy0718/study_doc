@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>list-style-type固定值</title>
+  <style>
+    *{font-family: 'SimHei'}
+    li{
+      padding-left: 150px;
+    }
+    ul{
+      border: solid 1px red;
+    }
+  </style>
+</head>
+<body>
+  <select>
+    <optgroup label="全部支持">
+      <option value="none">none</option>
+      <option value="disc">disc</option>
+      <option value="square">square</option>
+      <option value="decimal">decimal</option>
+      <option value="circle">circle</option>
+      <option value="lower-alpha">lower-alpha</option>
+      <option value="upper-alpha">upper-alpha</option>
+      <option value="lower-roman">lower-roman</option>
+      <option value="upper-roman">upper-roman</option>
+    </optgroup>
+    <optgroup label="IE8+支持">
+      <option value="lower-latin">lower-latin</option>
+      <option value="upper-latin">upper-latin</option>
+      <option value="lower-greek">lower-greek</option>
+      <option value="armenian">armenian</option>
+      <option value="georgian">georgian</option>
+      <option value="decimal-leading-zero">decimal-leading-zero</option>
+    </optgroup>
+  </select>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+  </ul>
+  <script>
+    var select = document.getElementsByTagName('select')[0];
+    var ul = document.getElementsByTagName('ul')[0];
+    select.onchange = function(){
+      var val = this.value;
+      ul.style.listStyleType = val;
+    }
+  </script>
+</body>
+</html>

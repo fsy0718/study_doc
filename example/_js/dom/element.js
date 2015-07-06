@@ -43,5 +43,52 @@ define(['support'],function(support){
 
   }
 
+  if(support.classList){
+    element.addClass = function(dom,className){
+      dom.classList.add(className);
+      return dom;
+    };
+    element.removeClass = function(dom,className){
+      dom.classList.remove(className);
+      return dom;
+    }
+    element.toggleClass = function(dom,className){
+      dom.classList.toggleClass(className);
+      return dom;
+    }
+    element.hasClass = function(dom,className){
+      return dom.classList.contains(className);
+    }
+  }else{
+    element.addClass = function(dom,className){
+      if(!element.hasClass(dom,className)){
+        dom.className += ' ' + className;
+      }
+      return dom;
+    };
+    element.hasClass  = function(dom,className){
+      var oldClass = dom.className;
+      var regClass = new RegExp('\\b' + className + '\\b');
+      return regClass.test(oldClass);
+    }
+    element.removeClass = function(dom,className){
+      var oldClass = dom.className;
+      var regClass = new RegExp('\\b' + className + '\\b','g');
+      if(element.hasClass(dom,className)){
+        var newClass = oldClass.replace(regClass,'');
+        dom.className = newClass;
+      }
+      return dom;
+    }
+    element.toggleClass = function(dom,className){
+      if(element.hasClass(dom,className)){
+        element.removeClass(dom,className);
+      }else{
+        element.addClass(dom,className);
+      }
+      return dom;
+    }
+  }
+
   return element;
 })

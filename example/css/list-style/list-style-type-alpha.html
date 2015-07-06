@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>利用list-style-type的latin或alpha属性实现自动添加选项</title>
+  <style>
+    ul{
+      list-style-type: upper-alpha;
+
+    }
+    li{
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><input type="text"><a href="javascript:;" class="add" tabindex="-1">添加</a></li>
+  </ul>
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../_js'
+    })
+    require(['event/simple','dom/element'],function(event,element){
+      var tpl = '<input type="text"><a href="javascript:;" class="del" tabindex="-1">删除</a>'
+      var ul = document.getElementsByTagName('ul')[0];
+      function addOpt(){
+        var newLi = document.createElement('li');
+        newLi.innerHTML = tpl;
+        ul.appendChild(newLi);
+      }
+
+      function delOpt(context){
+        ul.removeChild(context);
+      }
+
+      event.on(ul,'click',function(e){
+        var target = e.target || e.srcElement;
+        if(element.hasClass(target,'add')){
+          addOpt();
+        }
+        else if(element.hasClass(target,'del')){
+          var li = target.parentNode;
+          delOpt(li);
+        }
+
+      })
+    })
+
+
+
+  </script>
+</body>
+</html>
