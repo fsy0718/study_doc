@@ -1,6 +1,6 @@
 define(['../core'],function(Fsy){
   var class2type = {};
-  var serialize = Object.prototype.toString;
+  var serialize = class2type.toString;
   var rword = /[^, ]+/g;
   'String Number Boolean RegExp Function Array Object Date Error'.replace(rword,function(name){
       class2type['[object ' + name + ']'] = name.toLowerCase();
@@ -23,5 +23,10 @@ define(['../core'],function(Fsy){
     }
   } : function(fn){
     return serialize.call(fn) === '[object Function]'
-  }
+  };
+
+
+  ['String','Number','Array','Date','Object']
+
+
 })

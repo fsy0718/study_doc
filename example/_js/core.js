@@ -1,25 +1,37 @@
-define(function(){
-  var version = '0.0.1'
+define(['./var/slice'],function(slice){
+  var version = '0.0.1';
 
   var Fsy = function(selector,context){
-    return new Fsy.fn.init(select,context);
-  };
+    return new Fsy.fn.init();
+  }
 
   Fsy.fn = Fsy.prototype = {
-    fsy: version,
     version: version,
-    init: function(selector,context){
+    fsy: version,
+  }
 
+  Fsy.extend = Fsy.fn.extend = function(override,target,source){
+    var len = arguments.length,_arg = arguments;
+    if(len){
+      if(typeof arguments[0] !== 'boolean'){
+        override = false;
+        _arg = slice.call(arguments,1);
+      }
+      if(_arg.length){
+
+      }
+    }else{
+      return this;
     }
   }
 
-  Fsy.extends
-
-  Fsy.fn.init.prototype = Fsy.fn;
 
 
+  Fsy.fn.init = function(selector,context){
+    this.ele = selector;
+  }
 
-  return Fsy;
 
+  Fsy.fn.init.prototype = Fsy.fn
 
 })
