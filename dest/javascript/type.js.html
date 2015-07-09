@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: EventTarget.js</title>
+    <title>JSDoc: Source: type.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: EventTarget.js</h1>
+    <h1 class="page-title">Source: type.js</h1>
 
     
 
@@ -26,17 +26,34 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @class EventTarget
+ * @module  type
  */
-function EventTarget(){}
-
-EventTarget.prototype = {
-  addEventListener: function(){},
-  removeEventListener: function(){},
-  dispatchEvent: function(){}
-
-}
-</code></pre>
+module.exports = {
+  /**
+   * 原始类型
+   - string
+   - number
+   - boolean
+   */
+  primitiveType: '',
+  /**
+   * 对象类型
+   - object
+   - array
+   - function
+   - date
+   - regexp
+   - error
+   - global object
+   */
+  objectType:'',
+  /**
+   * 特殊类型
+   - null
+   - undefined
+   */
+  specialType: ''
+}</code></pre>
         </article>
     </section>
 
