@@ -1,4 +1,4 @@
-define(function(){
+define(['./transformPosToWindow'],function(transformPosToWindow){
   var brushMap,iconLen,parseIconMap,drawIconBox,drawIconBoxs,lastCheckedInfos,clearLastCheckIcon,checkIcon,brushMethods,emitter;
   brushMap = {
     width:  100,
@@ -86,10 +86,10 @@ define(function(){
     var iconName = brushMap.icons[idx];
     context.ctx.strokeColor = 'rgba(0,0,0,0.4)';
     if(brushMethods[iconName]){
-      brushMethods[iconName].apply(context,[{x:iconOpt.drawLeft,y:iconOpt.drawTop},{x:iconOpt.drawLeft + iconOpt.drawWidth,y:iconOpt.drawTop + iconOpt.drawHeight}]);
+      brushMethods[iconName]({x:iconOpt.drawLeft,y:iconOpt.drawTop},{x:iconOpt.drawLeft + iconOpt.drawWidth,y:iconOpt.drawTop + iconOpt.drawHeight},context);
       context.ctx.stroke();
-      context.brushs[iconName] = function(start,end){
-        brushMethods[iconName].apply(context,arguments);
+      context.brushs[iconName] = function(start,end,_context){
+        brushMethods[iconName](start,end,_context);
       }
     }
   }
@@ -110,15 +110,15 @@ define(function(){
   }
 
   brushMethods = {
-    'line': function(start,end){
-
-      this.ctx.moveTo(start.x,start.y);
-      this.ctx.lineTo(end.x,end.y);
+    'line': function(start,end,_context){
+      console.log(_context);
+      _context.ctx.moveTo(start.x,start.y);
+      _context.ctx.lineTo(end.x,end.y);
 
     },
-    'rectangle':function(start,end){
-      this.ctx.moveTo(start.x,start.y);
-      this.ctx.strokeRect(start.x,start.y,Math.abs(end.x-start.x),Math.abs(end.y-start.y));
+    'rectangle':function(start,end,_context){
+      _context.ctx.moveTo(start.x,start.y);
+      _context.ctx.strokeRect(start.x,start.y,Math.abs(end.x-start.x),Math.abs(end.y-start.y));
     }
   }
 

@@ -17,6 +17,16 @@ define(['./Brush','./Paint'],function(Brush,Paint){
     this.brush = new Brush(brushCvs,this);
   }
 
+  CanvasBoard.prototype.draw = function(start,end){
+    var self = this;
+    if(self.currentMethodFn){
+      self.paint.ctx.save();
+      self.currentMethodFn(start,end,self.paint);
+      self.paint.ctx.stroke();
+      self.paint.ctx.restore();
+    }
+  }
+
 
 
 
