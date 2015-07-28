@@ -10,6 +10,8 @@ var marked = require('marked');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var cache = require('gulp-cache');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
 
 
@@ -111,6 +113,15 @@ gulp.task('mddoc',function(){
     path.extname = '.md';
   }))
   .pipe(gulp.dest('md'))
+})
+
+gulp.task('sass_example',function(){
+  return gulp.src('./example/_css/scss/*.scss')
+    .pipe(sass({
+      errorLogToConsole: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('./example/_css'))
 })
 
 gulp.task('jsdoc',['canvas_jsdoc','js_jsdoc','index_jsdoc','css3_jsdoc','css_jsdoc','node_jsdoc'])

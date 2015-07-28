@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas shadow</title>
+  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+  <style>
+    body{
+      background: #f0f0f0;
+    }
+    canvas{
+      box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+      background: #fff;
+      border-radius: 4px;
+    }
+    .paint-board{
+      margin: 20px auto;
+
+    }
+    .paint-board:after,.paint-board:before{
+      content:'';
+      clear: both;
+    }
+    .paint-board:after{
+      display: table;
+      overflow: hidden;
+    }
+    .paint-brush,.paint-paint{
+      float: left;
+      margin-top: 20px;
+    }
+    .paint-brush{
+      margin-right: 20px;
+    }
+    .paint-paint{
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+  <div class="paint-board">
+    <div class="paint-control">
+      <label for="stroke">stroke:</label>
+      <select id="stroke">
+        <option>red</option>
+        <option>yellow</option>
+        <option>gold</option>
+        <option>purple</option>
+      </select>
+      <label for="fill">fill:</label>
+      <select id="fill">
+        <option>red</option>
+        <option>yellow</option>
+        <option>gold</option>
+        <option>purple</option>
+      </select>
+      <label for="lineWidth">line width:</label>
+      <select id="lineWidth">
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      </select>
+      <button>Ease all</button>
+    </div>
+    <div class="paint-brush">
+      <canvas class="cvs-brush"></canvas>
+    </div>
+    <div class="paint-paint">
+      <canvas class="cvs-paint"></canvas>
+    </div>
+  </div>
+
+
+  <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+  <script>
+    require.config({
+      baseUrl: '../../../_js',
+      paths: {
+        paint: '../html5/canvas/demo/paint'
+      }
+    })
+    require(['paint/index'],function(CanvasBoard){
+      var container = document.querySelector('.paint-board')
+      window.canvasBoard = new CanvasBoard(container);
+    })
+  </script>
+</body>
+</html>

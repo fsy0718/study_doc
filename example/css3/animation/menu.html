@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style>
+    body{
+      margin: 0;
+      background: #f2f2f2;
+      text-align: center;
+    }
+    ul{
+      margin-top: 50px;
+      padding: 0;
+      list-style: none outside none;
+      display: inline-block;
+      transform: rotate(-45deg) skew(20deg,5deg);
+    }
+    a{
+      display: block;
+      width: 4em;
+      height: 2.5em;
+      line-height: 2.5em;
+      color: #fde;
+      border-bottom: 1px solid #e6e6e6;
+      background: #000;
+      text-decoration: none;
+      box-shadow: -1.5em 1em 0 #e3e3e3;
+      position: relative;
+    }
+    a:before,a:after{
+      position: absolute;
+      content: '';
+    }
+    a:before{
+      width: .5em;
+      height: 2.5em;
+      background: #000;
+      top: .25em;
+      left: -.5em;
+      transform: skewY(-45deg);
+    }
+    a:after{
+      width: 3em;
+      height: 0.5em;
+      background: #000;
+      bottom: -.5em;
+      left: 0.25em;
+      transform: rotate(45deg) skewY(-45deg);
+    }
+    a:hover{
+      color: #fff;
+      transform: translate(0.6em,-.6em);
+      background: red;
+
+    }
+    a:hover:after{
+      width: 3em;
+      height: 1em;
+      bottom: -.8em;
+      background: red;
+    }
+    a:hover:before{
+      width: 1em;
+      background: red;
+      left: -.9em;
+      top: .5em;
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href=""><i class="fa fa-reorder"></i></a></li>
+    <li><a href=""><i class="fa fa-th-large"></i></a></li>
+    <li><a href=""><i class="fa fa-bar-chart"></i></a></li>
+    <li><a href=""><i class="fa fa-tasks"></i></a></li>
+    <li><a href=""><i class="fa fa-bell"></i></a></li>
+    <li><a href=""><i class="fa fa-archive"></i></a></li>
+    <li><a href=""><i class="fa fa-comment"></i></a></li>
+    <li><a href=""><i class="fa fa-sitemap"></i></a></li>
+    <li><a href=""><i class="fa fa-thumbs-up"></i></a></li>
+    <li><a href=""><i class="fa fa-tumblr"></i></a></li>
+  </ul>
+</body>
+</html>

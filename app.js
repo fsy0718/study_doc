@@ -13,7 +13,9 @@ http.createServer(function(request,response){
       var _file = isExampleSource ? './' + request.url : './dest/' + request.url;
       fs.readFile(_file,'utf-8',function(err,data){
         if(err){
+          return false;
           throw err;
+
         }
         response.writeHead(200,{
           "Content-Type":{

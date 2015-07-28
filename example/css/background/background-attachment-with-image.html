@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>background-attachment</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body > div{
+      height: 100%;
+      width: 50%;
+      float: left;
+      background-image: url(../../_img/ie.png);
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      min-height: 2000px;
+    }
+    .demo1{
+      background-attachment:  fixed;
+    }
+    .demo2{
+      background-attachment:  scroll;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo1">fixed</div>
+  <div class="demo2">scroll</div>
+</body>
+</html>
