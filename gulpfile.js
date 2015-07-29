@@ -12,6 +12,7 @@ var pngquant = require('imagemin-pngquant');
 var cache = require('gulp-cache');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var browserSync = require('browser-sync');
 
 
 
@@ -127,3 +128,12 @@ gulp.task('sass_example',function(){
 gulp.task('jsdoc',['canvas_jsdoc','js_jsdoc','index_jsdoc','css3_jsdoc','css_jsdoc','node_jsdoc'])
 
 gulp.task('doc',['jsdoc','imgmin'])
+
+gulp.task('browser-sync',function(){
+  browserSync({
+    files: '**',
+    server: {
+      baseDir: './'
+    }
+  })
+})
